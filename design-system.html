@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galatea AI – Designsystem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Farben */
+  --navy-900:#1F2350;
+  --navy-700:#2B2F6B;
+  --navy-500:#4A4F8C;
+  --sky-300:#9FB9DA;
+  --sky-100:#D3E0F0;
+  --cream:#F7F0EC;
+  --peach-300:#E9C2B3;
+  --peach-500:#DDA993;
+  --burgundy:#8A1F4B;
+  --white:#FFFFFF;
+  --text:#2B2F6B;
+  --text-muted:#6B6F8F;
+  --border:#DAD5E3;
+
+  /* Typografie */
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Inter',system-ui,sans-serif;
+
+  /* Radien */
+  --r-sm:8px; --r-md:20px; --r-lg:28px; --r-pill:999px;
+
+  /* Schatten */
+  --shadow-card:0 12px 32px rgba(43,47,107,.12);
+  --shadow-soft:0 6px 18px rgba(43,47,107,.08);
+
+  /* Abstände */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);color:var(--text);background:var(--cream);line-height:1.6;font-size:16px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 var(--s-5)}
+section.ds{padding:var(--s-8) 0;border-bottom:1px solid var(--border)}
+.ds-title{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:40px;line-height:1.15;margin-bottom:var(--s-5)}
+.ds-note{color:var(--text-muted);font-size:14px;margin-bottom:var(--s-6);max-width:620px}
+
+/* Basiskomponenten */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--navy-700)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
+.eyebrow.light{color:var(--peach-300)}
+
+.h-display{font-family:var(--font-display);font-style:italic;font-weight:400;line-height:1.1}
+.h-hero{font-size:72px}
+.h-section{font-size:48px}
+.h-card{font-size:28px}
+.h-small{font-size:22px}
+.accent{color:var(--burgundy)}
+.lead{font-size:16px;color:var(--text-muted)}
+
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:var(--r-pill);font:500 14px var(--font-body);border:0;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+.btn-peach{background:var(--peach-500);color:var(--navy-900)}
+.btn-burgundy{background:var(--burgundy);color:#fff}
+.btn-outline{background:transparent;color:var(--navy-700);border:1px solid var(--navy-700)}
+.btn .arr{font-size:12px}
+
+.tag{display:inline-block;padding:4px 14px;border:1px solid var(--border);border-radius:var(--r-pill);font-size:11px;color:var(--text-muted);background:rgba(255,255,255,.5)}
+.badge{display:inline-block;padding:5px 12px;border-radius:var(--r-pill);background:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-700);box-shadow:var(--shadow-soft)}
+
+/* Farbfelder */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--s-4)}
+.sw{border-radius:var(--r-md);overflow:hidden;background:#fff;box-shadow:var(--shadow-soft)}
+.sw .chip{height:96px}
+.sw .meta{padding:var(--s-3) var(--s-4);font-size:12px}
+.sw .meta b{display:block;font-size:13px}
+.sw .meta code{color:var(--text-muted)}
+
+/* Raster Typo */
+.type-row{display:grid;grid-template-columns:140px 1fr;gap:var(--s-5);align-items:baseline;padding:var(--s-4) 0;border-top:1px solid var(--border)}
+.type-row .lbl{font-size:12px;color:var(--text-muted)}
+
+/* Hero-Muster */
+.hero{background:linear-gradient(160deg,var(--navy-900),var(--navy-700));color:#fff;border-radius:var(--r-lg);padding:var(--s-8);display:grid;grid-template-columns:1.2fr 1fr;gap:var(--s-6);align-items:center;overflow:hidden}
+.hero .circle{width:280px;height:280px;border-radius:50%;margin:auto;background:radial-gradient(circle at 35% 35%,#f6d7c4,#c996b0 45%,#6c6fb0 80%);box-shadow:0 0 0 14px rgba(255,255,255,.06)}
+.hero .btn-row{display:flex;gap:var(--s-5);align-items:center;margin-top:var(--s-5)}
+.hero small{font-size:11px;max-width:160px;line-height:1.4;font-weight:500}
+
+/* Kreis-Karten */
+.sky-band{background:linear-gradient(180deg,var(--sky-300),var(--sky-100));border-radius:var(--r-lg);padding:var(--s-8) var(--s-5)}
+.circle-cards{display:flex;flex-wrap:wrap;gap:var(--s-6);justify-content:center}
+.circle-card{width:240px;height:240px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 28px 38px;position:relative;box-shadow:var(--shadow-card)}
+.circle-card .ico{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:84px;height:84px;border-radius:50%;background:var(--navy-700);color:#fff;display:grid;place-items:center;font-size:30px}
+.circle-card h4{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:20px;line-height:1.25}
+
+/* Team-Karte */
+.team-card{width:320px;background:#fff;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card)}
+.team-card .photo{height:220px;background:linear-gradient(160deg,#35517a,#1e3350);position:relative}
+.team-card .photo .badge{position:absolute;left:16px;bottom:16px}
+.team-card .body{padding:var(--s-5)}
+.team-card .name{display:flex;justify-content:space-between;align-items:center}
+.team-card .role{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:6px 0 var(--s-3)}
+.team-card hr{border:0;border-top:1px solid var(--border);margin-bottom:var(--s-3)}
+.team-card p{font-size:13px;color:var(--text-muted)}
+.arrow-icon{color:var(--burgundy);font-size:26px;line-height:1}
+
+/* Navigation */
+.nav{background:var(--navy-900);color:#fff;border-radius:var(--r-md);padding:var(--s-4) var(--s-5);display:flex;align-items:center;justify-content:space-between}
+.nav .logo{font-weight:500;letter-spacing:.14em;font-size:20px}
+.nav ul{display:flex;gap:var(--s-6);list-style:none;font-size:13px;font-weight:500}
+
+/* Kontakt */
+.contact{background:linear-gradient(100deg,var(--peach-300),var(--cream) 80%);border-radius:var(--r-lg);padding:var(--s-8);display:flex;justify-content:space-between;align-items:center;gap:var(--s-6);flex-wrap:wrap}
+
+/* Footer */
+.footer{background:var(--navy-700);color:#fff;border-radius:var(--r-md);padding:var(--s-6);display:grid;grid-template-columns:1fr 1.4fr 1.4fr;gap:var(--s-6);font-size:12px}
+.footer b{display:block;margin-bottom:var(--s-2);font-size:13px}
+.footer span{color:rgba(255,255,255,.65)}
+
+/* Abstände & Radien */
+.space-row{display:flex;align-items:center;gap:var(--s-4);margin-bottom:var(--s-2);font-size:12px;color:var(--text-muted)}
+.space-row i{display:block;height:14px;background:var(--peach-500);border-radius:3px}
+.radii{display:flex;gap:var(--s-5);flex-wrap:wrap}
+.radii div{width:110px;height:80px;background:var(--navy-700);color:#fff;display:grid;place-items:center;font-size:12px}
+.shadows{display:flex;gap:var(--s-6)}
+.shadows div{width:160px;height:90px;background:#fff;border-radius:var(--r-md);display:grid;place-items:center;font-size:12px;color:var(--text-muted)}
+.stack{display:flex;flex-wrap:wrap;gap:var(--s-5);align-items:center}
+@media(max-width:800px){.hero,.footer{grid-template-columns:1fr}.h-hero{font-size:44px}.h-section{font-size:34px}.type-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header style="background:var(--navy-900);color:#fff;padding:var(--s-8) 0">
+  <div class="wrap">
+    <span class="eyebrow light">Designsystem</span>
+    <h1 class="h-display h-hero" style="margin-top:var(--s-4)">Galatea AI</h1>
+    <p style="margin-top:var(--s-4);color:rgba(255,255,255,.7);max-width:560px">Digital durchdacht. Menschlich gemacht. – Elegant, wissenschaftlich, warm: Serifen-Kursiv, tiefes Marineblau, Creme und Pfirsich.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="ds">
+  <span class="eyebrow">01 · Farben</span>
+  <h2 class="ds-title" style="margin-top:var(--s-3)">Farbpalette</h2>
+  <p class="ds-note">Marineblau trägt Hero, Footer und Überschriften. Creme ist die Standardfläche, Himmelblau und Pfirsich setzen Sektionsakzente. Burgunder ist ausschließlich für Hervorhebungen und primäre Aktionen.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:var(--navy-900)"></div><div class="meta"><b>Navy 900</b><code>#1F2350</code> · Hero, Nav</div></div>
+    <div class="sw"><div class="chip" style="background:var(--navy-700)"></div><div class="meta"><b>Navy 700</b><code>#2B2F6B</code> · Text, Footer</div></div>
+    <div class="sw"><div class="chip" style="background:var(--navy-500)"></div><div class="meta"><b>Navy 500</b><code>#4A4F8C</code> · Sekundär</div></div>
+    <div class="sw"><div class="chip" style="background:var(--sky-300)"></div><div class="meta"><b>Sky 300</b><code>#9FB9DA</code> · Leistungsband</div></div>
+    <div class="sw"><div class="chip" style="background:var(--sky-100)"></div><div class="meta"><b>Sky 100</b><code>#D3E0F0</code> · Verlaufsende</div></div>
+    <div class="sw"><div class="chip" style="background:var(--cream)"></div><div class="meta"><b>Cream</b><code>#F7F0EC</code> · Seitenhintergrund</div></div>
+    <div class="sw"><div class="chip" style="background:var(--peach-300)"></div><div class="meta"><b>Peach 300</b><code>#E9C2B3</code> · Kontaktband</div></div>
+    <div class="sw"><div class="chip" style="background:var(--peach-500)"></div><div class="meta"><b>Peach 500</b><code>#DDA993</code> · Nav-Button</div></div>
+    <div class="sw"><div class="chip" style="background:var(--burgundy)"></div><div class="meta"><b>Burgundy</b><code>#8A1F4B</code> · Akzent, CTA</div></div>
+    <div class="sw"><div class="chip" style="background:#fff;border-bottom:1px solid var(--border)"></div><div class="meta"><b>White</b><code>#FFFFFF</code> · Karten</div></div>
+    <div class="sw"><div class="chip" style="background:var(--text-muted)"></div><div class="meta"><b>Muted</b><code>#6B6F8F</code> · Fließtext</div></div>
+    <div class="sw"><div class="chip" style="background:var(--border)"></div><div class="meta"><b>Border</b><code>#DAD5E3</code> · Linien, Tags</div></div>
+  </div>
+</section>
+
+<section class="ds">
+  <span class="eyebrow">02 · Typografie</span>
+  <h2 class="ds-title" style="margin-top:var(--s-3)">Schrift</h2>
+  <p class="ds-note">Überschriften in Playfair Display Italic, alles andere in Inter. Eyebrows sind Versalien mit großer Laufweite und vorangestellter Linie.</p>
+  <div class="type-row"><div class="lbl">Hero · 72/1.1</div><div class="h-display h-hero">Digital durchdacht.</div></div>
+  <div class="type-row"><div class="lbl">Sektion · 48/1.1</div><div class="h-display h-section">Strategie trifft auf <span class="accent">angewandte KI.</span></div></div>
+  <div class="type-row"><div class="lbl">Karte · 28/1.1</div><div class="h-display h-card">Dr. Alexander Kleiner</div></div>
+  <div class="type-row"><div class="lbl">Klein · 22/1.1</div><div class="h-display h-small">Robotiklösungen für Fertigung</div></div>
+  <div class="type-row"><div class="lbl">Eyebrow · 11 Inter 500</div><div><span class="eyebrow">Leistungsbereiche</span></div></div>
+  <div class="type-row"><div class="lbl">Body · 16/1.6</div><div class="lead">Der Fokus liegt auf der Beratung und Umsetzung in den Bereichen automatisierte Prozesse, AI-basierter Kundenservice und intelligentes Datenmanagement.</div></div>
+  <div class="type-row"><div class="lbl">Rolle · 10 Inter 600</div><div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase">KI · Robotik · Autonome Systeme</div></div>
+</section>
+
+<section class="ds">
+  <span class="eyebrow">03 · Aktionen</span>
+  <h2 class="ds-title" style="margin-top:var(--s-3)">Buttons, Tags, Badges</h2>
+  <div class="stack">
+    <a class="btn btn-peach">Kontakt aufnehmen <span class="arr">↗</span></a>
+    <a class="btn btn-burgundy">info@galatea-ai.de <span class="arr">↗</span></a>
+    <a class="btn btn-outline">Mehr erfahren <span class="arr">↗</span></a>
+    <span class="tag">strategy</span><span class="tag">robotics</span><span class="tag">applied ai</span>
+    <span class="badge">Gründerpartner Galatea AI</span>
+  </div>
+</section>
+
+<section class="ds">
+  <span class="eyebrow">04 · Navigation</span>
+  <h2 class="ds-title" style="margin-top:var(--s-3)">Header</h2>
+  <div class="nav">
+    <div class="logo">GALATEA</div>
+    <ul><li>Profil</li><li>Spezialisierung</li><li>Team</li><li>Kontakt</li></ul>
+    <a class="btn btn-peach">Kontakt aufnehmen <span class="arr">↗</span></a>
+  </div>
+</section>
+
+<section class="ds">
+  <span class="eyebrow">05 · Hero</span>
+  <h2 class="ds-title" style="margin-top:var(--s-3)">Hero-Sektion</h2>
+  <div class="hero">
+    <div>
+      <span class="eyebrow light">Süddeutschland · Schweiz · Shanghai</span>
+      <h3 class="h-display h-hero" style="margin-top:var(--s-4)">Digital durchdacht. Menschlich gemacht.</h3>
+      <p style="margin-top:var(--s-4);font-size:14px;color:rgba(255,255,255,.85);max-width:380px">Beratung für Unternehmen, Hochschulen und Forschungseinrichtungen bei KI und Robotik</p>
+      <div class="btn-row"><a class="btn btn-peach">Mehr erfahren <span class="arr">↗</span></a><small>Strategie, Technologie und Umsetzung in einem Beratungsansatz.</small></div>
+    </div>
+    <div class="circle"></div>
+  </div>
+</section>
+
+<section class="ds">
+  <span class="eyebrow">06 · Karten</span>
+  <h2 class="ds-title" style="margin-top:var(--s-3)">Leistungs- und Teamkarten</h2>
+  <p class="ds-note">Leistungen sitzen in weißen Kreisen mit überlappendem Navy-Icon; Schlüsselwörter werden in Burgunder hervorgehoben. Teamkarten haben 20&nbsp;px Radius, Foto mit Badge, kursiven Namen und Pfeil-Icon.</p>
+  <div class="sky-band" style="margin-bottom:var(--s-7)">
+    <div class="circle-cards" style="padding-top:20px">
+      <div class="circle-card"><div class="ico">⌬</div><h4>KI-basierte <span class="accent">Automatisierung</span> im Kundenservice</h4></div>
+      <div class="circle-card"><div class="ico">☺</div><h4><span class="accent">Robotiklösungen</span> für Fertigung und menschliche Interaktion</h4></div>
+      <div class="circle-card"><div class="ico">⌘</div><h4>Strategische <span class="accent">KI-Roadmaps</span> und digitale Transformation</h4></div>
+    </div>
+  </div>
+  <div class="team-card">
+    <div class="photo"><span class="badge">Gründerpartner Galatea AI</span></div>
+    <div class="body">
+      <div class="name"><span class="h-display h-card" style="font-size:24px">Dr. Alexander Kleiner</span><span class="arrow-icon">↗</span></div>
+      <div class="role">KI · Robotik · Autonome Systeme</div>
+      <hr>
+      <p>Erfahrene Führungspersönlichkeit im Bereich KI und Robotik mit über zwei Jahrzehnten Forschungserfahrung.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ds">
+  <span class="eyebrow">07 · Kontakt & Footer</span>
+  <h2 class="ds-title" style="margin-top:var(--s-3)">Abschluss</h2>
+  <div class="contact" style="margin-bottom:var(--s-5)">
+    <div><span class="eyebrow">Kontakt</span><h3 class="h-display h-section" style="margin-top:var(--s-3)">Lassen Sie uns Ihre KI-Strategie starten.</h3></div>
+    <div style="text-align:center"><p style="font-size:12px;font-weight:600;margin-bottom:var(--s-3)">Bereit für den nächsten belastbaren Schritt?</p><a class="btn btn-burgundy">info@galatea-ai.de <span class="arr">↗</span></a></div>
+  </div>
+  <div class="footer">
+    <div><b>Galatea AI</b><span>Angaben gemäß § 5 DDG</span></div>
+    <div><b>Galatea AI Beratung</b><span>Alexander Kleiner, Fang Wei-Kleiner<br>Waldstrasse 22, 75242 Neuhausen<br>info@galatea-ai.de</span></div>
+    <div><b>Haftung für externe Links</b><span>Für Inhalte externer Links übernehmen wir keine Haftung.</span></div>
+  </div>
+</section>
+
+<section class="ds" style="border-bottom:0">
+  <span class="eyebrow">08 · Tokens</span>
+  <h2 class="ds-title" style="margin-top:var(--s-3)">Abstände, Radien, Schatten</h2>
+  <div style="margin-bottom:var(--s-6)">
+    <div class="space-row"><i style="width:4px"></i>4 · s-1</div>
+    <div class="space-row"><i style="width:8px"></i>8 · s-2</div>
+    <div class="space-row"><i style="width:12px"></i>12 · s-3</div>
+    <div class="space-row"><i style="width:16px"></i>16 · s-4</div>
+    <div class="space-row"><i style="width:24px"></i>24 · s-5</div>
+    <div class="space-row"><i style="width:32px"></i>32 · s-6</div>
+    <div class="space-row"><i style="width:48px"></i>48 · s-7</div>
+    <div class="space-row"><i style="width:64px"></i>64 · s-8</div>
+    <div class="space-row"><i style="width:96px"></i>96 · s-9 (Sektionsabstand)</div>
+  </div>
+  <div class="radii" style="margin-bottom:var(--s-6)">
+    <div style="border-radius:var(--r-sm)">8 · sm</div>
+    <div style="border-radius:var(--r-md)">20 · md</div>
+    <div style="border-radius:var(--r-lg)">28 · lg</div>
+    <div style="border-radius:var(--r-pill)">999 · pill</div>
+    <div style="border-radius:50%;width:80px">Kreis</div>
+  </div>
+  <div class="shadows"><div style="box-shadow:var(--shadow-soft)">soft</div><div style="box-shadow:var(--shadow-card)">card</div></div>
+</section>
+
+</main>
+</body>
+</html>

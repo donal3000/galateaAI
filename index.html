@@ -1,92 +1,413 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galatea AI Beratung | KI & Robotik</title>
-    <link href="https://cdnjs.cloudflare.com" rel="stylesheet">
-    <style>
-        :root { --primary: #2c3e50; --accent: #3498db; --text: #333; --light: #f4f7f6; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); margin: 0; background: var(--light); }
-        header { background: white; padding: 2rem 1rem; text-align: center; border-bottom: 3px solid var(--accent); }
-        .logo { max-width: 150px; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        nav { background: var(--primary); color: white; padding: 0.5rem; text-align: center; sticky; top: 0; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-        section { background: white; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; shadow: 0 2px 15px rgba(0,0,0,0.05); }
-        h1, h2 { color: var(--primary); }
-        .spec-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; list-style: none; padding: 0; }
-        .spec-list li { background: var(--light); padding: 1rem; border-left: 4px solid var(--accent); border-radius: 4px; }
-        .team-member { border-top: 1px solid #eee; padding-top: 1.5rem; margin-top: 1.5rem; }
-        footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #777; }
-        .badge { background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-bottom: 1rem; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galatea AI Beratung</title>
+<meta name="description" content="Beratung für Unternehmen, Hochschulen und Forschungseinrichtungen bei KI und Robotik – Süddeutschland, Schweiz, Shanghai.">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="consent.css">
+<!-- Schriften (Google Fonts) werden erst nach Einwilligung per consent.js geladen -->
+<style>
+:root{
+  --navy-900:#1F2350; --navy-700:#2B2F6B; --navy-500:#4A4F8C;
+  --sky-300:#9FB9DA; --sky-100:#D3E0F0;
+  --cream:#F7F0EC; --peach-300:#E9C2B3; --peach-500:#DDA993;
+  --burgundy:#8A1F4B; --white:#FFFFFF;
+  --text:#2B2F6B; --text-muted:#6B6F8F; --border:#DAD5E3;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --r-sm:8px; --r-md:20px; --r-lg:28px; --r-pill:999px;
+  --shadow-card:0 12px 32px rgba(43,47,107,.12);
+  --shadow-soft:0 6px 18px rgba(43,47,107,.08);
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--font-body);color:var(--text);background:var(--cream);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--burgundy);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--s-5)}
+@media(min-width:900px){.wrap{padding:0 var(--s-7)}}
+
+/* Basis */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--navy-700)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor;flex:none}
+.eyebrow.light{color:var(--peach-300)}
+.h-display{font-family:var(--font-display);font-style:italic;font-weight:400;line-height:1.1}
+.h-hero{font-size:72px}
+.h-section{font-size:48px}
+.h-card{font-size:28px}
+.h-small{font-size:22px}
+.accent{color:var(--burgundy)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:var(--r-pill);font:500 14px/1.4 var(--font-body);border:0;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+.btn-peach{background:var(--peach-500);color:var(--navy-900)}
+.btn-burgundy{background:var(--burgundy);color:#fff}
+.btn .arr{font-size:12px}
+.tag{display:inline-block;padding:4px 14px;border:1px solid var(--border);border-radius:var(--r-pill);font-size:11px;color:var(--text-muted);background:rgba(255,255,255,.5)}
+.badge{display:inline-block;padding:5px 12px;border-radius:var(--r-pill);background:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-700);box-shadow:var(--shadow-soft)}
+section{position:relative}
+.pad{padding:var(--s-9) 0}
+
+/* Navigation */
+.top{position:relative;overflow:hidden;color:#fff;background:var(--navy-900)}
+.top::before{content:"";position:absolute;inset:-110px 0;z-index:0;background:linear-gradient(rgba(31,35,80,.3),rgba(31,35,80,.3)),url("img/Galatea_Visual1.png") center/cover no-repeat;transform:translate3d(0,var(--py,0px),0)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;color:#fff;transition:background .25s,box-shadow .25s}
+.nav.scrolled{background:rgba(31,35,80,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(31,35,80,.25)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:var(--s-5)}
+.logo{display:inline-flex;align-items:center}
+.logo img{height:60px;width:auto}
+.nav ul{display:flex;gap:var(--s-6);list-style:none;font-size:13px;font-weight:500}
+.nav ul a{text-decoration:none;opacity:.9}
+.nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.nav .btn{padding:10px 20px;font-size:13px}
+
+/* Hero */
+.hero{position:relative;z-index:1;color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--s-7);align-items:center;min-height:620px;padding-top:calc(var(--s-8) + 72px);padding-bottom:var(--s-8)}
+.hero h1{margin-top:var(--s-4)}
+.hero p.sub{margin-top:var(--s-5);font-size:14px;color:rgba(255,255,255,.85);max-width:380px}
+.btn-row{display:flex;gap:var(--s-5);align-items:center;margin-top:var(--s-5);flex-wrap:wrap}
+.btn-row small{font-size:11px;max-width:170px;line-height:1.4;font-weight:500}
+.scroll{display:flex;align-items:center;gap:12px;margin-top:var(--s-8);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.scroll::before{content:"";width:28px;height:1px;background:#fff}
+.hero-visual{transform:translate3d(0,var(--py,0px),0);display:flex;flex-direction:column;align-items:center;gap:var(--s-7)}
+.hero-circle{width:min(100%,420px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 14px rgba(255,255,255,.06);background:var(--cream)}
+.hero-circle img{width:100%;height:100%;object-fit:cover;transform:scale(1.1)}
+.hero-visual figcaption{font-size:11px;color:rgba(255,255,255,.75);align-self:center}
+
+/* Profil */
+.profil{background:var(--cream)}
+.profil .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:var(--s-8);align-items:center}
+.profil h2{margin:var(--s-5) 0 var(--s-4);max-width:520px;font-size:40px}
+.profil p{color:var(--text-muted);max-width:520px;font-size:14px}
+.profil .tags{display:flex;gap:var(--s-2);flex-wrap:wrap;margin-top:var(--s-6);padding-top:var(--s-4);position:relative}
+.profil .tags::before{content:"";position:absolute;top:0;left:0;width:80px;height:1px;background:var(--border)}
+.profil-visual{position:relative;display:grid;place-items:center;padding:var(--s-6)}
+.profil-visual::before{content:"";position:absolute;inset:-6%;background:radial-gradient(closest-side,var(--peach-300),rgba(233,194,179,.35) 55%,transparent 100%);opacity:.8}
+.profil-visual .frame{position:relative;transform:translate3d(0,var(--py,0px),0);width:min(100%,400px);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card)}
+.profil-visual .frame img{width:100%;height:auto;aspect-ratio:3.5/4;object-fit:cover;object-position:center;transform:scale(1.04)}
+
+/* Leistungen */
+.leistungen{overflow:hidden;background:#9FB9DA}
+.leistungen::before{content:"";position:absolute;inset:-110px 0;z-index:0;background:url("img/Galatea_Visual2.png") center/cover no-repeat;transform:translate3d(0,var(--py,0px),0)}
+.leistungen>.wrap{position:relative;z-index:1}
+.head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s-6);flex-wrap:wrap}
+.head-row h2{margin-top:var(--s-4)}
+.head-note{font-size:11px;font-weight:500;max-width:230px;margin-top:var(--s-1);line-height:1.5}
+.leistungen .wrap{max-width:1280px}
+.circle-cards{--d:min(340px,calc((100vw - 96px)/3.27));--gap:calc(var(--d)*.13);display:flex;flex-wrap:wrap;column-gap:var(--gap);row-gap:calc(var(--d)*.125);justify-content:center;width:calc(var(--d)*3 + var(--gap)*2);max-width:100%;margin:var(--s-6) auto 0;padding:calc(var(--d)*.08) 0}
+.circle-card{width:var(--d);aspect-ratio:1/1;border-radius:50%;background:#fff;position:relative;box-shadow:var(--shadow-card)}
+.circle-card:nth-child(4){margin-left:calc(var(--d)*.1)}
+.circle-card .ico{position:absolute;top:-2.7%;left:50%;transform:translateX(-50%);width:44.5%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.circle-card .ico img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.circle-card h3{position:absolute;top:48%;left:50%;transform:translateX(-50%);width:62%;text-align:center;white-space:nowrap;font-size:calc(var(--d)*.077);line-height:calc(var(--d)*.093);margin:0}
+
+/* Team */
+.team{background:var(--cream)}
+.team .head-row h2{max-width:720px}
+.head-note.line{border-top:1px solid var(--navy-700);padding-top:var(--s-3);margin-top:var(--s-5);max-width:250px}
+.cards{display:flex;flex-wrap:wrap;gap:var(--s-5);justify-content:center;margin-top:var(--s-8)}
+.team-card{width:min(100%,360px);background:#fff;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column}
+.team-card .photo{height:260px;position:relative;background:linear-gradient(160deg,#35517a,#1e3350)}
+.team-card .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;transform:scale(1.04)}
+.team-card .photo .badge{position:absolute;left:16px;bottom:16px}
+.team-card .body{padding:var(--s-5);flex:1}
+.team-card .name{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3)}
+.team-card .name h3{font-size:24px}
+.arrow-icon{color:var(--burgundy);font-size:26px;line-height:1;text-decoration:none}
+.team-card .role{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:6px 0 var(--s-3)}
+.team-card hr{border:0;border-top:1px solid var(--border);margin-bottom:var(--s-3)}
+.team-card p{font-size:13px;color:var(--text-muted)}
+
+/* Kontakt */
+.kontakt{background:linear-gradient(100deg,var(--peach-300),var(--cream) 80%)}
+.kontakt .grid{display:flex;justify-content:space-between;align-items:center;gap:var(--s-6);flex-wrap:wrap}
+.kontakt h2{margin-top:var(--s-4);max-width:560px}
+.kontakt .cta{text-align:center}
+.kontakt .cta p{font-size:12px;font-weight:600;margin-bottom:var(--s-3)}
+.kontakt .tags{display:flex;gap:var(--s-2);flex-wrap:wrap;margin-top:var(--s-7)}
+.kontakt .tag{color:var(--navy-700);background:rgba(255,255,255,.6);border-color:rgba(43,47,107,.15);font-weight:500}
+
+/* Footer */
+footer{background:var(--navy-900);color:#fff;padding:var(--s-8) 0 var(--s-5);font-size:12px}
+.foot-grid{display:grid;grid-template-columns:1fr 1.4fr 1.4fr;gap:var(--s-6)}
+footer b{display:block;margin-bottom:var(--s-2);font-size:13px;font-weight:600}
+footer span,footer a{color:rgba(255,255,255,.65);display:block}
+.copy a{display:inline;color:inherit;text-decoration:none}
+.copy a:hover{color:#fff}
+footer a.mail{color:var(--peach-300);text-decoration:none}
+.foot-logo{display:flex;align-items:center;gap:10px;font-size:15px;margin-bottom:var(--s-3)}
+.foot-logo i{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;font:normal 500 12px var(--font-body)}
+.copy{display:flex;justify-content:space-between;gap:var(--s-3);flex-wrap:wrap;margin-top:var(--s-8);padding-top:var(--s-4);border-top:1px solid rgba(255,255,255,.15);font-size:10px;color:rgba(255,255,255,.55)}
+
+
+/* Reveal (Lazy Floating Fade) – nur mit JS aktiv; nutzt die Eigenschaft "translate", damit bestehende transforms unberührt bleiben */
+.js .reveal{opacity:0;translate:0 26px}
+.js .reveal.is-visible{opacity:1;translate:0 0;transition:opacity .75s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms),translate .75s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms)}
+.reduce-motion .reveal,.reduce-motion .reveal.is-visible{opacity:1;translate:none;transition:none}
+.reduce-motion .top::before,.reduce-motion .leistungen::before,.reduce-motion .hero-visual,.reduce-motion .profil-visual .frame{transform:none}
+/* Responsive */
+@media(max-width:1000px){
+  .h-hero{font-size:56px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid>div:first-child{grid-column:1/-1}
+}
+@media(max-width:800px){
+  .pad{padding:var(--s-8) 0}
+  .h-hero{font-size:44px}
+  .h-section{font-size:34px}
+  .profil h2{font-size:30px}
+  .nav ul{display:none}
+  .hero .wrap{grid-template-columns:1fr;min-height:0;gap:var(--s-7)}
+  .hero-visual{gap:var(--s-4)}
+  .scroll{margin-top:var(--s-6)}
+  .profil .wrap{grid-template-columns:1fr;gap:var(--s-6)}
+  .profil-visual{order:2}
+  .foot-grid{grid-template-columns:1fr}
+  .head-note{max-width:none}
+  .circle-cards{--d:min(280px,calc(100vw - 48px));width:100%;row-gap:var(--s-6);margin-top:var(--s-5)}
+  .circle-card:nth-child(4){margin-left:0}
+  .kontakt .cta{text-align:left}
+}
+@media(max-width:480px){
+  .nav .btn{padding:9px 14px}
+  .logo img{height:54px}
+  .btn-row{gap:var(--s-4)}
+  .btn-burgundy{word-break:break-all}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
 </head>
 <body>
 
-<header>
-    <img src="logo.png" alt="Galatea AI Logo" class="logo">
-    <h1>Galatea AI Beratung</h1>
-    <p><strong>Freiberufliche Unternehmensberatung für Künstliche Intelligenz und Robotik</strong></p>
-    <div class="badge">Süddeutschland – Schweiz – Shanghai</div>
+<div class="top" data-parallax="0.12">
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="img/Galatea_Logo.svg" alt="Galatea AI" width="246" height="60"></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#spezialisierung">Spezialisierung</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-peach" href="#kontakt">Kontakt aufnehmen <span class="arr">↗</span></a>
+  </div>
 </header>
 
-<div class="container">
-    <section>
-        <h2>Unternehmensprofil</h2>
-        <p>Galatea AI Beratung unterstützt Unternehmen, Hochschulen und Forschungseinrichtungen bei der Integration von Künstlicher Intelligenz (KI) und Robotik in Geschäfts- und Entwicklungsprozesse. Der Fokus liegt auf Beratung und Umsetzung im Bereich automatisierter Prozesse, AI-basierter Kundenservices (Avatar-Technologien) und intelligentem Datenmanagement.</p>
-    </section>
+<main id="top">
 
-    <section>
-        <h2>Spezialisierung</h2>
-        <ul class="spec-list">
-            <li><i class="fas fa-robot"></i> KI-basierte Automatisierung im Customer Support (Avatar-APIs)</li>
-            <li><i class="fas fa-cogs"></i> Robotiklösungen für Fertigung und humanoide Interaktion</li>
-            <li><i class="fas fa-chart-line"></i> Strategische AI-Roadmaps und Digital-Transformation</li>
-            <li><i class="fas fa-database"></i> Data Engineering und Knowledge Management</li>
-            <li><i class="fas fa-graduation-cap"></i> Schulungen und Workshops</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Gründerteam</h2>
-        <div class="team-member">
-            <h3>Dr. Alexander Kleiner</h3>
-            <p>Erfahrene Führungspersönlichkeit im Bereich KI und Robotik mit über zwei Jahrzehnten Forschungserfahrung. Ehemaliger Direktor bei Bosch (autonomes Fahren) und Senior Principal Scientist bei iRobot (Roomba-Navigation). Weltweit anerkannte Autorität mit Professuren in China und Schweden.</p>
-        </div>
-        <div class="team-member">
-            <h3>Dr. Fang Wei-Kleiner</h3>
-            <p>Promotion in Informatik an der Universität Freiburg. Expertin für Datenbanken, Semantic Web und effiziente Algorithmen. Erfahrung als Vertretungsprofessorin sowie als Database Architektin für Echtzeit-Datenverarbeitung in der Privatwirtschaft.</p>
-        </div>
-    </section>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow light">Süddeutschland · Schweiz · Shanghai</span>
+      <h1 class="h-display h-hero">Digital durchdacht. Menschlich gemacht.</h1>
+      <p class="sub">Beratung für Unternehmen, Hochschulen und Forschungseinrichtungen bei KI und Robotik</p>
+      <div class="btn-row">
+        <a class="btn btn-peach" href="#profil">Mehr erfahren <span class="arr">↗</span></a>
+        <small>Strategie, Technologie und Umsetzung in einem Beratungsansatz.</small>
+      </div>
+      <div class="scroll">Scroll to explore</div>
+    </div>
+    <figure class="hero-visual" data-parallax="0.05" data-parallax-max="40">
+      <div class="hero-circle"><img src="img/hero-key-visual.jpg" alt="Profil einer Frau mit wehendem Haar in farbigem Lichtverlauf – Key Visual" width="963" height="963"></div>
+      <figcaption>Key visual human-conceived and AI-generated</figcaption>
+    </figure>
+  </div>
+</section>
 </div>
 
-
-<section id="impressum" style="font-size: 0.8rem; border-top: 1px dashed #ccc; margin-top: 3rem; padding-top: 1rem;">
-    <h3>Impressum</h3>
-    <p>
-        <strong>Angaben gemäß § 5 DDG:</strong><br>
-        Galatea AI Beratung<br>
-        [Alexander] [Kleiner]<br>
-        [Fang] [Wei-Kleiner]<br>
-        [Waldstrasse 22]<br>
-        [75242 Neuhasuen]
-    </p>
-    <p>
-        <strong>Kontakt:</strong><br>
-        E-Mail: <a href="mailto:info@galatea-ai.de">info@galatea-ai.de</a>
-    </p>
-    <p>
-        <strong>Umsatzsteuer-ID:</strong><br>
-        Gemäß § 27 a Umsatzsteuergesetz: [Deine USt-IdNr., ]
-    </p>
-    <p><em>Haftungshinweis: Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.</em></p>
+<section class="profil pad" id="profil">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Profil</span>
+      <h2 class="h-display">Galatea AI Beratung unterstützt Unternehmen und Forschungsistitute bei der Integration von KI und Robotik</h2>
+      <p>Der Fokus liegt auf der Beratung und Umsetzung in den Bereichen automatisierte Prozesse, AI-basierter Kundenservice (Avatar-Technologien) und intelligentes Datenmanagement, um diese nahtlos in die Arbeitsprozesse von Unternehmen und Forschungsinstituten zu integrieren, operative Abläufe zu optimieren und die Wettbewerbsfähigkeit langfristig zu sichern.</p>
+      <div class="tags"><span class="tag">strategy</span><span class="tag">robotics</span><span class="tag">applied ai</span></div>
+    </div>
+    <div class="profil-visual" data-parallax="0.06" data-parallax-max="40">
+      <div class="frame"><img src="img/profil-robotik.jpg" alt="Roboterhand berührt ein holografisches Daten-Dashboard in einem hellen Büro" width="878" height="1003" loading="lazy"></div>
+    </div>
+  </div>
 </section>
 
+<section class="leistungen pad" id="spezialisierung" data-parallax="0.12">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Leistungsbereiche</span>
+        <h2 class="h-display h-section">Strategie trifft auf angewandte KI.</h2>
+      </div>
+      <p class="head-note line">Fünf Leistungsbereiche für belastbare KI- und Robotiklösungen – von der Strategie bis zur Umsetzung.</p>
+    </div>
+    <div class="circle-cards">
+      <article class="circle-card">
+        <div class="ico"><img src="img/icon1.png" alt="" width="151" height="151" loading="lazy"></div>
+        <h3 class="h-display">KI-basierte<br><span class="accent">Automatisierung</span><br>im Kundenservice<br>(Avatar-APIs)</h3>
+      </article>
+      <article class="circle-card">
+        <div class="ico"><img src="img/icon2.png" alt="" width="151" height="151" loading="lazy"></div>
+        <h3 class="h-display"><span class="accent">Robotiklösungen</span><br>für Fertigung und<br>menschliche<br>Interaktion</h3>
+      </article>
+      <article class="circle-card">
+        <div class="ico"><img src="img/icon3.png" alt="" width="151" height="151" loading="lazy"></div>
+        <h3 class="h-display">Strategische<br><span class="accent">KI-Roadmaps</span><br>und digitale<br>Transformation</h3>
+      </article>
+      <article class="circle-card">
+        <div class="ico"><img src="img/icon4.png" alt="" width="151" height="151" loading="lazy"></div>
+        <h3 class="h-display">Data<br>Engineering und<br><span class="accent">Wissens-<br>Management</span></h3>
+      </article>
+      <article class="circle-card">
+        <div class="ico"><img src="img/icon5.png" alt="" width="151" height="151" loading="lazy"></div>
+        <h3 class="h-display">Schulungen und<br><span class="accent">Workshops</span> für die<br>selbstständige<br>Nutzung</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="team pad" id="team">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Team</span>
+        <h2 class="h-display h-section">Zwei Perspektiven. Eine gemeinsame Mission.</h2>
+      </div>
+      <p class="head-note line">Wissenschaftliche Tiefe, internationale Führungserfahrung und pragmatische Umsetzung.</p>
+    </div>
+    <div class="cards">
+      <article class="team-card">
+        <div class="photo"><img src="img/alexander-kleiner.jpg" alt="Porträt von Dr. Alexander Kleiner" width="882" height="600" loading="lazy"><span class="badge">Gründerpartner Galatea AI</span></div>
+        <div class="body">
+          <div class="name"><h3 class="h-display">Dr. Alexander Kleiner</h3><span class="arrow-icon" aria-hidden="true">↗</span></div>
+          <div class="role">KI · Robotik · Autonome Systeme</div>
+          <hr>
+          <p>Erfahrene Führungspersönlichkeit im Bereich KI und Robotik mit über zwei Jahrzehnten Forschungserfahrung. Ehemaliger Direktor bei Bosch (autonomes Fahren) und Senior Principal Scientist bei iRobot (Roomba-Navigation). Weltweit anerkannte Autorität mit Professuren in China und Schweden.</p>
+        </div>
+      </article>
+      <article class="team-card">
+        <div class="photo"><img src="img/fang-wei-kleiner.jpg" alt="Porträt von Dr. Fang Wei-Kleiner" width="882" height="600" loading="lazy"><span class="badge">Gründerpartner Galatea AI</span></div>
+        <div class="body">
+          <div class="name"><h3 class="h-display">Dr. Fang Wei-Kleiner</h3><span class="arrow-icon" aria-hidden="true">↗</span></div>
+          <div class="role">Daten · Semantic Web · Algorithmen</div>
+          <hr>
+          <p>Promotion in Informatik an der Universität Freiburg. Expertin für Datenbanken, Semantic Web und effiziente Algorithmen. Erfahrung als Vertretungsprofessorin sowie als Database Architektin für Echtzeit-Datenverarbeitung in der Privatwirtschaft.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="kontakt pad" id="kontakt">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="eyebrow">Kontakt</span>
+        <h2 class="h-display h-section">Lassen Sie uns Ihre KI-Strategie starten.</h2>
+      </div>
+      <div class="cta">
+        <p>Bereit für den nächsten belastbaren Schritt?</p>
+        <a class="btn btn-burgundy" href="mailto:info@galatea-ai.de">info@galatea-ai.de <span class="arr">↗</span></a>
+      </div>
+    </div>
+    <div class="tags"><span class="tag">süddeutschland</span><span class="tag">schweiz</span><span class="tag">shanghai</span></div>
+  </div>
+</section>
+
+</main>
 
 <footer>
-    <p>&copy; 2026 Galatea AI Beratung | Gegründet: 01. April 2026</p>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo foot-logo" href="#top"><img src="img/Galatea_Logo.svg" alt="Galatea AI" width="246" height="60"></a>
+        <span>Angaben gemäß § 5 DDG</span>
+      </div>
+      <div>
+        <b>Galatea AI Beratung</b>
+        <span>Alexander Kleiner, Fang Wei-Kleiner</span>
+        <span>Waldstrasse 22, 75242 Neuhausen</span>
+        <a class="mail" href="mailto:info@galatea-ai.de">info@galatea-ai.de</a>
+        <span>Wirtschafts-Identifikationsnummer gemäß § 139c AO: DE461219852-00001</span>
+      </div>
+      <div>
+        <b>Haftung für externe Links</b>
+        <span>Für Inhalte externer Links übernehmen wir keine Haftung. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</span>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 Galatea AI Beratung | Gegründet 01. April 2026</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#" data-cookie-settings>Cookie-Einstellungen</a></span></div>
+  </div>
 </footer>
 
+<script src="consent.js"></script>
+<script>
+/* Reveal + Parallax – Vanilla JS, ohne Library */
+(function () {
+  // Elemente, die automatisch .reveal bekommen (nur innerhalb dieser Sektionen; Header und Footer bleiben außen vor)
+  var REVEAL_SELECTORS = [
+    '.hero h1', '.hero .eyebrow', '.hero p', '.hero .btn', '.hero .btn-row small', '.hero .scroll', '.hero figcaption',
+    '.profil .eyebrow', '.profil h2', '.profil p', '.profil .tag',
+    '.leistungen .eyebrow', '.leistungen h2', '.leistungen .head-note', '.circle-card h3',
+    '.team .eyebrow', '.team h2', '.team .head-note', '.team-card h3', '.team-card .role', '.team-card p',
+    '.kontakt .eyebrow', '.kontakt h2', '.kontakt .cta p', '.kontakt .btn', '.kontakt .tag'
+  ];
+  var STAGGER = 100, MAX_DELAY = 600, DURATION = 750;
+  // false = Effekte laufen immer; true = bei "Reduce motion" im System/Browser werden sie abgeschaltet (barrierefrei)
+  var RESPECT_REDUCED_MOTION = false;
+  var reduce = RESPECT_REDUCED_MOTION && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) document.documentElement.classList.add("reduce-motion");
+
+  /* ---------- Reveal ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll(REVEAL_SELECTORS.join(',')));
+  if (!reduce && 'IntersectionObserver' in window) {
+    items.forEach(function (el) { el.classList.add('reveal'); });
+    var io = new IntersectionObserver(function (entries) {
+      var batch = entries.filter(function (e) { return e.isIntersecting; })
+        .sort(function (a, b) { return a.target.compareDocumentPosition(b.target) & 4 ? -1 : 1; });
+      batch.forEach(function (entry, i) {
+        var el = entry.target, delay = Math.min(i * STAGGER, MAX_DELAY);
+        io.unobserve(el);
+        el.style.setProperty('--reveal-delay', delay + 'ms');
+        el.style.willChange = 'opacity, translate';
+        el.classList.add('is-visible');
+        setTimeout(function () {            // danach alles zurücksetzen (Hover-Transitions bleiben unberührt)
+          el.style.willChange = '';
+          el.style.removeProperty('--reveal-delay');
+          el.classList.remove('reveal', 'is-visible');
+        }, delay + DURATION + 80);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Leichter Parallax ---------- */
+  var layers = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  if (!reduce && layers.length) {
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight;
+      layers.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        var speed = parseFloat(el.dataset.parallax) || 0.1;
+        var max = parseFloat(el.dataset.parallaxMax) || 100;
+        var off = -(r.top + r.height / 2 - vh / 2) * speed;
+        el.style.setProperty('--py', Math.max(-max, Math.min(max, off)).toFixed(1) + 'px');
+      });
+    }
+    function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    addEventListener('scroll', req, { passive: true });
+    addEventListener('resize', req);
+    update();
+  }
+})();
+</script>
+<script>
+(function(){var n=document.querySelector(".nav");function f(){n.classList.toggle("scrolled",window.scrollY>40)}f();addEventListener("scroll",f,{passive:true})})();
+</script>
 </body>
 </html>
-
