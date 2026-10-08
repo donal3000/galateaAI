@@ -69,6 +69,17 @@
     }
     if (b) b.focus({ preventScroll: true });
   }
+  // Leiste beim Scrollen ausblenden (nur ohne gespeicherte Entscheidung); ganz oben wieder einblenden
+  var away = false, ticking = false;
+  function syncAway() {
+    ticking = false;
+    var want = window.scrollY > 20;
+    if (want === away) return;
+    away = want;
+    banner.classList.toggle("cc-away", away);
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(syncAway); } }
+
   function decide(fonts) {
     write(fonts); apply(fonts); banner.hidden = true; modal.hidden = true;
   }
@@ -93,7 +104,9 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === "Escape" && !modal.hidden) { if (read()) modal.hidden = true; else show("main"); }
     });
+    window.addEventListener("scroll", onScroll, { passive: true });
     var c = read();
     if (c) apply(c.fonts); else show('main');
+    syncAway();
   });
 })();

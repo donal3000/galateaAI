@@ -3,7 +3,8 @@
 .cc[hidden],.cc-modal[hidden]{display:none}
 
 /* Leiste unten, volle Breite */
-.cc{position:fixed;left:0;right:0;bottom:0;z-index:100;background:var(--white);box-shadow:0 -12px 32px rgba(43,47,107,.12);padding:var(--s-5) var(--s-6)}
+.cc{position:fixed;left:0;right:0;bottom:0;z-index:100;background:var(--white);box-shadow:0 -12px 32px rgba(43,47,107,.12);padding:var(--s-5) var(--s-6);transition:opacity .4s ease,visibility 0s linear 0s}
+.cc.cc-away{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s ease,visibility 0s linear .4s}
 .cc-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:var(--s-6)}
 .cc-text{flex:1;min-width:0}
 .cc-title{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:24px;line-height:1.1;color:var(--navy-700);margin-bottom:var(--s-2)}
@@ -46,4 +47,4 @@
   .cc-dialog .cc-actions{grid-template-columns:1fr}
   .cc-dialog .cc-actions .cc-btn-primary{order:0}
 }
-@media(prefers-reduced-motion:reduce){.cc-btn,.cc-switch i,.cc-switch i::after{transition:none}}
+@media(prefers-reduced-motion:reduce){.cc,.cc-btn,.cc-switch i,.cc-switch i::after{transition:none}}
