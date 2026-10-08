@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://galatea-ai.de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/index-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/index-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/index-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/index-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/index-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/index-zh.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/index-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/index-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/projects.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/projects-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/projects-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/projects.html"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/projects-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/projects-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/projects-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/projects.html"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/projects-zh.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/projects-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/projects-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/projects.html"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/avatar.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/avatar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/avatar-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/avatar-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/avatar.html"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/avatar-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/avatar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/avatar-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/avatar-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/avatar.html"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/avatar-zh.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/avatar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/avatar-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/avatar-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/avatar.html"/>
+  </url>
+</urlset>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects – AI Avatars and Robotics | Galatea AI</title>
+<meta name="description" content="Explore Avatar by Galatea AI: digital companions, a shared software platform and a business model built on subscriptions and annual licences.">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="consent.css">
+<!-- Schriften (Google Fonts) werden erst nach Einwilligung per consent.js geladen -->
+<style>
+:root{
+  --navy-900:#1F2350; --navy-700:#2B2F6B; --navy-500:#4A4F8C;
+  --sky-300:#9FB9DA; --sky-100:#D3E0F0;
+  --cream:#F7F0EC; --peach-300:#E9C2B3; --peach-500:#DDA993;
+  --burgundy:#8A1F4B; --white:#FFFFFF;
+  --text:#2B2F6B; --text-muted:#6B6F8F; --border:#DAD5E3;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --r-sm:8px; --r-md:20px; --r-lg:28px; --r-pill:999px;
+  --shadow-card:0 12px 32px rgba(43,47,107,.12);
+  --shadow-soft:0 6px 18px rgba(43,47,107,.08);
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--font-body);color:var(--text);background:var(--cream);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--burgundy);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--s-5)}
+@media(min-width:900px){.wrap{padding:0 var(--s-7)}}
+
+/* Basis */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--navy-700)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor;flex:none}
+.eyebrow.light{color:var(--peach-300)}
+.h-display{font-family:var(--font-display);font-style:italic;font-weight:400;line-height:1.1}
+.h-hero{font-size:72px}
+.h-section{font-size:48px}
+.h-card{font-size:28px}
+.h-small{font-size:22px}
+.accent{color:var(--burgundy)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:var(--r-pill);font:500 14px/1.4 var(--font-body);border:0;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+.btn-peach{background:var(--peach-500);color:var(--navy-900)}
+.btn-burgundy{background:var(--burgundy);color:#fff}
+.btn .arr{font-size:12px}
+.tag{display:inline-block;padding:4px 14px;border:1px solid var(--border);border-radius:var(--r-pill);font-size:11px;color:var(--text-muted);background:rgba(255,255,255,.5)}
+.badge{display:inline-block;padding:5px 12px;border-radius:var(--r-pill);background:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-700);box-shadow:var(--shadow-soft)}
+section{position:relative}
+.pad{padding:var(--s-9) 0}
+
+/* Navigation */
+.top{position:relative;overflow:hidden;color:#fff;background:var(--navy-900)}
+.top::before{content:"";position:absolute;inset:-110px 0;z-index:0;background:linear-gradient(rgba(31,35,80,.3),rgba(31,35,80,.3)),url("img/Galatea_Visual1.png") center/cover no-repeat;transform:translate3d(0,var(--py,0px),0)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;color:#fff;transition:background .25s,box-shadow .25s}
+.nav.scrolled{background:rgba(31,35,80,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(31,35,80,.25)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:var(--s-5)}
+.logo{display:inline-flex;align-items:center}
+.logo img{height:60px;width:auto}
+.nav ul{display:flex;gap:var(--s-6);list-style:none;font-size:13px;font-weight:500}
+.nav ul a{text-decoration:none;opacity:.9}
+.nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.nav .btn{padding:10px 20px;font-size:13px}
+
+/* Hero */
+.hero{position:relative;z-index:1;color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--s-7);align-items:center;min-height:620px;padding-top:calc(var(--s-8) + 72px);padding-bottom:var(--s-8)}
+.hero h1{margin-top:var(--s-4)}
+.hero p.sub{margin-top:var(--s-5);font-size:14px;color:rgba(255,255,255,.85);max-width:380px}
+.btn-row{display:flex;gap:var(--s-5);align-items:center;margin-top:var(--s-5);flex-wrap:wrap}
+.btn-row small{font-size:11px;max-width:170px;line-height:1.4;font-weight:500}
+.scroll{display:flex;align-items:center;gap:12px;margin-top:var(--s-8);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.scroll::before{content:"";width:28px;height:1px;background:#fff}
+.hero-visual{transform:translate3d(0,var(--py,0px),0);display:flex;flex-direction:column;align-items:center;gap:var(--s-7)}
+.hero-circle{width:min(100%,420px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 14px rgba(255,255,255,.06);background:var(--cream)}
+.hero-circle img{width:100%;height:100%;object-fit:cover;transform:scale(1.1)}
+.hero-visual figcaption{font-size:11px;color:rgba(255,255,255,.75);align-self:center}
+
+/* Profil */
+.profil{background:var(--cream)}
+.profil .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:var(--s-8);align-items:center}
+.profil h2{margin:var(--s-5) 0 var(--s-4);max-width:520px;font-size:40px}
+.profil p{color:var(--text-muted);max-width:520px;font-size:14px}
+.profil .tags{display:flex;gap:var(--s-2);flex-wrap:wrap;margin-top:var(--s-6);padding-top:var(--s-4);position:relative}
+.profil .tags::before{content:"";position:absolute;top:0;left:0;width:80px;height:1px;background:var(--border)}
+.profil-visual{position:relative;display:grid;place-items:center;padding:var(--s-6)}
+.profil-visual::before{content:"";position:absolute;inset:-6%;background:radial-gradient(closest-side,var(--peach-300),rgba(233,194,179,.35) 55%,transparent 100%);opacity:.8}
+.profil-visual .frame{position:relative;transform:translate3d(0,var(--py,0px),0);width:min(100%,400px);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card)}
+.profil-visual .frame img{width:100%;height:auto;aspect-ratio:3.5/4;object-fit:cover;object-position:center;transform:scale(1.04)}
+
+/* Leistungen */
+.leistungen{overflow:hidden;background:#9FB9DA}
+.leistungen::before{content:"";position:absolute;inset:-110px 0;z-index:0;background:url("img/Galatea_Visual2.png") center/cover no-repeat;transform:translate3d(0,var(--py,0px),0)}
+.leistungen>.wrap{position:relative;z-index:1}
+.head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s-6);flex-wrap:wrap}
+.head-row h2{margin-top:var(--s-4)}
+.head-note{font-size:11px;font-weight:500;max-width:230px;margin-top:var(--s-1);line-height:1.5}
+.leistungen .wrap{max-width:1280px}
+.circle-cards{--d:min(340px,calc((100vw - 96px)/3.27));--gap:calc(var(--d)*.13);display:flex;flex-wrap:wrap;column-gap:var(--gap);row-gap:calc(var(--d)*.125);justify-content:center;width:calc(var(--d)*3 + var(--gap)*2);max-width:100%;margin:var(--s-6) auto 0;padding:calc(var(--d)*.08) 0}
+.circle-card{width:var(--d);aspect-ratio:1/1;border-radius:50%;background:#fff;position:relative;box-shadow:var(--shadow-card)}
+.circle-card:nth-child(4){margin-left:calc(var(--d)*.1)}
+.circle-card .ico{position:absolute;top:-2.7%;left:50%;transform:translateX(-50%);width:44.5%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.circle-card .ico img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.circle-card h3{position:absolute;top:48%;left:50%;transform:translateX(-50%);width:62%;text-align:center;white-space:nowrap;font-size:calc(var(--d)*.077);line-height:calc(var(--d)*.093);margin:0}
+
+/* Team */
+.team{background:var(--cream)}
+.team .head-row h2{max-width:720px}
+.head-note.line{border-top:1px solid var(--navy-700);padding-top:var(--s-3);margin-top:var(--s-5);max-width:250px}
+.cards{display:flex;flex-wrap:wrap;gap:var(--s-5);justify-content:center;margin-top:var(--s-8)}
+.team-card{width:min(100%,360px);background:#fff;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column}
+.team-card .photo{height:260px;position:relative;background:linear-gradient(160deg,#35517a,#1e3350)}
+.team-card .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;transform:scale(1.04)}
+.team-card .photo .badge{position:absolute;left:16px;bottom:16px}
+.team-card .body{padding:var(--s-5);flex:1}
+.team-card .name{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3)}
+.team-card .name h3{font-size:24px}
+.arrow-icon{color:var(--burgundy);font-size:26px;line-height:1;text-decoration:none}
+.team-card .role{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:6px 0 var(--s-3)}
+.team-card hr{border:0;border-top:1px solid var(--border);margin-bottom:var(--s-3)}
+.team-card p{font-size:13px;color:var(--text-muted)}
+
+/* Kontakt */
+.kontakt{background:linear-gradient(100deg,var(--peach-300),var(--cream) 80%)}
+.kontakt .grid{display:flex;justify-content:space-between;align-items:center;gap:var(--s-6);flex-wrap:wrap}
+.kontakt h2{margin-top:var(--s-4);max-width:560px}
+.kontakt .cta{text-align:center}
+.kontakt .cta p{font-size:12px;font-weight:600;margin-bottom:var(--s-3)}
+.kontakt .tags{display:flex;gap:var(--s-2);flex-wrap:wrap;margin-top:var(--s-7)}
+.kontakt .tag{color:var(--navy-700);background:rgba(255,255,255,.6);border-color:rgba(43,47,107,.15);font-weight:500}
+
+/* Footer */
+footer{background:var(--navy-900);color:#fff;padding:var(--s-8) 0 var(--s-5);font-size:12px}
+.foot-grid{display:grid;grid-template-columns:1fr 1.4fr 1.4fr;gap:var(--s-6)}
+footer b{display:block;margin-bottom:var(--s-2);font-size:13px;font-weight:600}
+footer span,footer a{color:rgba(255,255,255,.65);display:block}
+.copy a{display:inline;color:inherit;text-decoration:none}
+.copy a:hover{color:#fff}
+footer a.mail{color:var(--peach-300);text-decoration:none}
+.foot-logo{display:flex;align-items:center;gap:10px;font-size:15px;margin-bottom:var(--s-3)}
+.foot-logo i{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;font:normal 500 12px var(--font-body)}
+.copy{display:flex;justify-content:space-between;gap:var(--s-3);flex-wrap:wrap;margin-top:var(--s-8);padding-top:var(--s-4);border-top:1px solid rgba(255,255,255,.15);font-size:10px;color:rgba(255,255,255,.55)}
+
+
+/* Reveal (Lazy Floating Fade) – nur mit JS aktiv; nutzt die Eigenschaft "translate", damit bestehende transforms unberührt bleiben */
+.js .reveal{opacity:0;translate:0 26px}
+.js .reveal.is-visible{opacity:1;translate:0 0;transition:opacity .75s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms),translate .75s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms)}
+.reduce-motion .reveal,.reduce-motion .reveal.is-visible{opacity:1;translate:none;transition:none}
+.reduce-motion .top::before,.reduce-motion .leistungen::before,.reduce-motion .hero-visual,.reduce-motion .profil-visual .frame{transform:none}
+/* Responsive */
+@media(max-width:1000px){
+  .h-hero{font-size:56px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid>div:first-child{grid-column:1/-1}
+}
+@media(max-width:800px){
+  .pad{padding:var(--s-8) 0}
+  .h-hero{font-size:44px}
+  .h-section{font-size:34px}
+  .profil h2{font-size:30px}
+  .nav ul{display:none}
+  .hero .wrap{grid-template-columns:1fr;min-height:0;gap:var(--s-7)}
+  .hero-visual{gap:var(--s-4)}
+  .scroll{margin-top:var(--s-6)}
+  .profil .wrap{grid-template-columns:1fr;gap:var(--s-6)}
+  .profil-visual{order:2}
+  .foot-grid{grid-template-columns:1fr}
+  .head-note{max-width:none}
+  .circle-cards{--d:min(280px,calc(100vw - 48px));width:100%;row-gap:var(--s-6);margin-top:var(--s-5)}
+  .circle-card:nth-child(4){margin-left:0}
+  .kontakt .cta{text-align:left}
+}
+@media(max-width:480px){
+  .logo{flex:none}
+  .logo img{height:auto;width:160px}
+  .nav .btn{padding:9px 14px}
+  .btn-row{gap:var(--s-4)}
+  .btn-burgundy{word-break:break-all}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+<link rel="stylesheet" href="languages.css"><link rel="stylesheet" href="projects.css"><link rel="canonical" href="https://galatea-ai.de/projects-en.html"><link rel="alternate" hreflang="de" href="https://galatea-ai.de/projects.html"><link rel="alternate" hreflang="en" href="https://galatea-ai.de/projects-en.html"><link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/projects-zh.html"><link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/projects.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Galatea AI"><meta property="og:title" content="Projects – AI Avatars and Robotics | Galatea AI"><meta property="og:description" content="Explore Avatar by Galatea AI: digital companions, a shared software platform and a business model built on subscriptions and annual licences."><meta property="og:url" content="https://galatea-ai.de/projects-en.html"><meta property="og:locale" content="en_GB"><meta property="og:image" content="https://galatea-ai.de/img/avatar-persona.png"><meta property="og:image:alt" content="Digital character rendered in Unreal Engine"><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://galatea-ai.de/#organization", "name": "Galatea AI Beratung", "url": "https://galatea-ai.de/", "logo": "https://galatea-ai.de/img/Galatea_Logo.svg", "email": "info@galatea-ai.de", "address": {"@type": "PostalAddress", "streetAddress": "Waldstrasse 22", "postalCode": "75242", "addressLocality": "Neuhausen", "addressCountry": "DE"}}, {"@type": "WebSite", "@id": "https://galatea-ai.de/#website", "url": "https://galatea-ai.de/", "name": "Galatea AI", "publisher": {"@id": "https://galatea-ai.de/#organization"}, "inLanguage": ["de", "en", "zh-Hans"]}, {"@type": "CollectionPage", "@id": "https://galatea-ai.de/projects-en.html#webpage", "url": "https://galatea-ai.de/projects-en.html", "name": "Projects – AI Avatars and Robotics | Galatea AI", "description": "Explore Avatar by Galatea AI: digital companions, a shared software platform and a business model built on subscriptions and annual licences.", "inLanguage": "en", "isPartOf": {"@id": "https://galatea-ai.de/#website"}, "publisher": {"@id": "https://galatea-ai.de/#organization"}, "image": [{"@type": "ImageObject", "contentUrl": "https://galatea-ai.de/img/avatar-persona.png", "caption": "Digital character rendered in Unreal Engine"}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://galatea-ai.de/index-en.html"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://galatea-ai.de/projects-en.html"}]}]}</script><link rel="stylesheet" href="disclosures.css"></head>
+<body class="project-page">
+
+<header class="nav scrolled project-nav">
+  <div class="wrap">
+    <a class="logo" href="index-en.html"><img src="img/Galatea_Logo.svg" alt="Galatea AI" width="246" height="60"></a>
+    <nav aria-label="Main navigation" class="site-nav">
+      <ul>
+        <li><a href="index-en.html#profil">Profile</a></li>
+        <li><a href="index-en.html#spezialisierung">Expertise</a></li>
+        <li><a href="projects-en.html" aria-current="page">Projects</a></li><li><a href="index-en.html#team">Team</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions"><div class="language-switch" role="group" aria-label="Choose language"><a href="projects.html" lang="de" hreflang="de" data-language="de">Deutsch</a><a href="projects-en.html" lang="en" hreflang="en" data-language="en" aria-current="page">English</a><a href="projects-zh.html" lang="zh-Hans" hreflang="zh-Hans" data-language="zh">简体中文</a></div><a class="btn btn-peach" href="mailto:info@galatea-ai.de">Contact <span class="arr">↗</span></a>
+  </div></div>
+</header>
+
+<main id="top"><section class="projects-intro wrap"><span class="eyebrow">Galatea AI</span><h1 class="h-display">Our projects</h1><p>Our first project, Avatar, combines digital companionship with a platform designed for recurring software revenue and future robotics applications.</p></section><section class="project-list wrap" aria-label="Projects"><article class="project-card"><a class="project-picture" href="avatar-en.html" aria-label="Explore Avatar"><img src="img/avatar-persona.png" alt="A digital Avatar character — Digital character rendered in Unreal Engine" width="512" height="512"><span class="image-disclosure portrait-disclosure">Digital character rendered in Unreal Engine</span></a><div class="project-copy"><span class="eyebrow">Avatar</span><h2 class="h-display">Digital humans with personality.</h2><p>Meet Avatar: a digital companion with a character of its own, expressive conversation and memory across encounters.</p><a class="btn btn-burgundy" href="avatar-en.html">Explore Avatar <span aria-hidden="true">↗</span></a></div></article></section><section data-investor="proof" class="investor-proof wrap"><h2 class="eyebrow">What is already in place</h2><div class="proof-grid"><div><span>Live interfaces</span><strong>Web and iPhone</strong></div><div><span>Languages</span><strong>German, English and Chinese</strong></div><div><span>Deployment</span><strong>Local operation available</strong></div></div></section><section data-investor="case" class="investment-case"><div class="wrap"><span class="eyebrow">Avatar</span><h2 class="h-display">The investment case for Avatar</h2><p class="section-lead">The opportunity combines an existing digital product with several routes to commercial growth.</p><div class="case-grid"><article class=""><h3>Technology that carries context forward</h3><p>A configurable personality, persistent emotional state and memory across sessions work together. This creates continuity beyond a single conversation.</p></article><article class=""><h3>One platform, several customer markets</h3><p>Customer service, expert knowledge, home assistance and companionship share the same core software. Character profiles and domain knowledge adapt it to each role.</p></article><article class=""><h3>Recurring revenue, broader distribution</h3><p>The business model combines subscriptions and annual licences with custom avatars and add-ons. Hardware partners form part of the planned route into physical products.</p></article></div><a class="text-link" href="avatar-en.html#business">Explore the technology and business model ↗</a></div></section><section data-investor="contact" class="project-contact"><div class="wrap"><div><h2 class="h-display">Interested in the next stage of Avatar?</h2><p>Discuss the product, investment opportunity or a pilot partnership with our team.</p></div><a class="btn btn-burgundy" href="mailto:info@galatea-ai.de">Talk to the founders ↗</a></div></section></main><footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo foot-logo" href="index-en.html"><img src="img/Galatea_Logo.svg" alt="Galatea AI" width="246" height="60"></a>
+        <span>Information pursuant to Section 5 DDG</span>
+      </div>
+      <div>
+        <b>Galatea AI Beratung</b>
+        <span>Alexander Kleiner, Fang Wei-Kleiner</span>
+        <span>Waldstrasse 22, 75242 Neuhausen</span>
+        <a class="mail" href="mailto:info@galatea-ai.de">info@galatea-ai.de</a>
+        <span>Business identification number pursuant to Section 139c AO: DE461219852-00001</span>
+      </div>
+      <div>
+        <b>Liability for external links</b>
+        <span>We accept no liability for the content of external links. The operators of the linked websites are solely responsible for their content.</span>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 Galatea AI Beratung | Founded 1 April 2026</span><span><a href="impressum-en.html">Legal notice</a> · <a href="datenschutz-en.html">Privacy</a> · <a href="#" data-cookie-settings>Cookie settings</a></span></div>
+  </div>
+</footer>
+
+<script src="consent.js"></script><script src="languages.js"></script></body>
+</html>
