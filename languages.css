@@ -1,0 +1,30 @@
+/* Shared language controls; no external fonts or services are required. */
+.nav-actions{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.language-switch{display:flex;align-items:center;gap:3px;padding:4px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(31,35,80,.28);white-space:nowrap}
+.language-switch a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:6px 10px;border-radius:999px;font:500 12px/1.3 var(--font-body);color:#fff;text-decoration:none;transition:background .15s}
+.language-switch a:hover{background:rgba(255,255,255,.15)}
+.language-switch a[aria-current="page"]{color:var(--navy-900);background:var(--peach-500)}
+.language-switch a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.nav ul{gap:22px}
+.nav .wrap{gap:18px}
+html[lang="zh-Hans"]{--font-body:'Inter','PingFang SC','Microsoft YaHei','Noto Sans CJK SC',system-ui,sans-serif;--font-display:'Songti SC','STSong','SimSun',serif}
+html[lang="zh-Hans"] .h-display,html[lang="zh-Hans"] .policy h2{font-style:normal;line-height:1.35}
+html[lang="zh-Hans"] .h-hero{font-size:60px}
+html[lang="zh-Hans"] .eyebrow,html[lang="zh-Hans"] .role{letter-spacing:.08em}
+html[lang="zh-Hans"] .circle-card h3{line-height:1.5}
+@media(max-width:1100px){.nav ul{gap:14px}.nav .logo img{width:200px;height:auto}.language-switch a{padding:6px 8px}.nav-actions{gap:10px}}
+@media(max-width:1000px){.nav nav{display:none}}
+@media(max-width:800px){html[lang="zh-Hans"] .h-hero{font-size:40px}}
+@media(max-width:620px){
+  html{scroll-padding-top:124px}
+  .nav{background:rgba(31,35,80,.96)}
+  .nav .wrap{height:auto;min-height:112px;flex-wrap:wrap;gap:8px 12px;padding-top:8px;padding-bottom:8px}
+  .nav .logo{order:1}
+  .nav .logo img{width:150px;height:auto}
+  .nav-actions{display:contents}
+  .nav-actions>.btn{order:2;margin-left:auto;padding:9px 12px;font-size:12px;white-space:nowrap}
+  .language-switch{order:3;flex-basis:100%;justify-content:center;border:0;padding:0;background:none;gap:8px}
+  .language-switch a{padding:7px 16px;min-height:36px}
+  .hero .wrap{padding-top:calc(var(--s-8) + 112px)}
+}
+@media(prefers-reduced-motion:reduce){.language-switch a{transition:none}}
