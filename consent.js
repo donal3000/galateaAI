@@ -1,13 +1,42 @@
 (function () {
   var KEY = 'galatea-consent';
+  var VERSION = 2;
+  var ID = 'G-1WX73630DH';
+  var started = false;
+  window['ga-disable-' + ID] = true;
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+  function valid(c) { return c && c.version === VERSION && typeof c.analytics === 'boolean'; }
+  function clearAnalyticsCookies() {
+    var names = document.cookie.split(';').map(function (v) { return v.trim().split('=')[0]; }).filter(function (n) { return /^_ga(?:_|$)/.test(n); });
+    var host = location.hostname.split('.');
+    var domains = [''];
+    for (var i = 0; i < host.length - 1; i++) domains.push(host.slice(i).join('.'), '.' + host.slice(i).join('.'));
+    names.forEach(function (name) { domains.forEach(function (domain) {
+      document.cookie = name + '=; Max-Age=0; path=/; SameSite=Lax' + (domain ? '; domain=' + domain : '');
+    }); });
+  }
+  function loadAnalytics() {
+    if (started) return;
+    started = true;
+    window['ga-disable-' + ID] = false;
+    gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    gtag('js', new Date());
+    gtag('config', ID, { allow_google_signals: false, allow_ad_personalization_signals: false, cookie_expires: 34128000, cookie_update: false });
+    var script = document.createElement('script');
+    script.id = 'galatea-ga'; script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
+    document.head.appendChild(script);
+  }
   var FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap';
   var banner, modal;
 
   function read() {
     try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; }
   }
-  function write(fonts) {
-    try { localStorage.setItem(KEY, JSON.stringify({ fonts: !!fonts, date: new Date().toISOString() })); } catch (e) {}
+  function write(fonts, analytics) {
+    try { localStorage.setItem(KEY, JSON.stringify({ version: VERSION, fonts: !!fonts, analytics: !!analytics, date: new Date().toISOString() })); } catch (e) {}
   }
   function loadFonts() {
     if (document.getElementById('gf-css')) return;
@@ -19,7 +48,16 @@
     var l = document.getElementById('gf-css');
     if (l) l.remove();
   }
-  function apply(fonts) { fonts ? loadFonts() : unloadFonts(); }
+  function apply(fonts, analytics) {
+    fonts ? loadFonts() : unloadFonts();
+    if (analytics) loadAnalytics();
+    else {
+      window['ga-disable-' + ID] = true;
+      clearAnalyticsCookies();
+      // Reload after withdrawal to remove the loaded Google library and its listeners.
+      if (started) location.reload();
+    }
+  }
 
   function build() {
     banner = document.createElement("div");
@@ -38,27 +76,27 @@
   var translations = {
     de: {
       title: 'Ihre Privatsphäre zählt',
-      intro: 'Wir setzen keine Tracking- oder Werbe-Cookies ein. Mit Ihrer Einwilligung laden wir die Schriftarten Playfair Display und Inter von Google Fonts; dabei wird Ihre IP-Adresse an Google übertragen. Ohne Einwilligung zeigen wir die Seite mit Systemschriften. Details in unserer',
+      intro: "Optionale Dienste laden wir nur mit Ihrer Einwilligung: Google Analytics misst Besuche, Seitenaufrufe, Herkunft und Nutzung; Google Fonts lädt Schriftarten. Dabei werden Daten an Google übertragen, auch in die USA. Sie können beide Dienste getrennt auswählen oder ablehnen. Details in unserer",
       privacy: 'Datenschutzerklärung', custom: 'Anpassen', reject: 'Alle ablehnen', accept: 'Alle akzeptieren', close: 'Schließen', settings: 'Einstellungen anpassen',
       instruction: 'Wählen Sie, welche Dienste Sie zulassen. Ihre Auswahl können Sie jederzeit über „Cookie-Einstellungen“ im Seitenfuß ändern.',
       necessary: 'Notwendig', always: 'Immer aktiv', local: 'Speichert nur Ihre Auswahl auf diesem Gerät (lokaler Speicher). Es werden keine Cookies gesetzt.',
-      fonts: 'Schriftarten (Google Fonts)', details: 'Lädt Playfair Display und Inter von Servern der Google LLC (USA). Dabei wird Ihre IP-Adresse übertragen.', save: 'Auswahl speichern'
+      analytics: 'Besuchsstatistik (Google Analytics)', analyticsDetails: 'Verwendet Cookies, um Besuche und Nutzung zu messen. Google erhält unter anderem Seitenaufrufe, Geräteinformationen und die ungefähre Region. Keine personalisierte Werbung. Widerruf jederzeit hier möglich.', fonts: 'Schriftarten (Google Fonts)', details: 'Lädt Playfair Display und Inter von Servern der Google LLC (USA). Dabei wird Ihre IP-Adresse übertragen.', save: 'Auswahl speichern'
     },
     en: {
       title: 'Your privacy matters',
-      intro: 'We use no tracking or advertising cookies. With your consent, we load the Playfair Display and Inter typefaces from Google Fonts, which transmits your IP address to Google. Without consent, we display the website using system fonts. See our',
+      intro: "Optional services load only with your consent: Google Analytics measures visits, page views, traffic sources and usage; Google Fonts loads typefaces. Data is sent to Google, including in the USA. You can allow or reject each service separately. See our",
       privacy: 'privacy policy', custom: 'Customise', reject: 'Reject all', accept: 'Accept all', close: 'Close', settings: 'Customise settings',
       instruction: 'Choose which services to allow. You can change your choice at any time using “Cookie settings” in the footer.',
       necessary: 'Necessary', always: 'Always active', local: 'Stores only your choice on this device (local storage). No cookies are set.',
-      fonts: 'Typefaces (Google Fonts)', details: 'Loads Playfair Display and Inter from Google LLC servers (USA). Your IP address is transmitted in the process.', save: 'Save selection'
+      analytics: 'Visitor statistics (Google Analytics)', analyticsDetails: 'Uses cookies to measure visits and usage. Google receives page views, device information and approximate location, among other data. No personalised advertising. You can withdraw consent here at any time.', fonts: 'Typefaces (Google Fonts)', details: 'Loads Playfair Display and Inter from Google LLC servers (USA). Your IP address is transmitted in the process.', save: 'Save selection'
     },
     zh: {
       title: '我们重视您的隐私',
-      intro: '我们不使用追踪或广告 Cookie。经您同意后，我们会从 Google Fonts 加载 Playfair Display 和 Inter 字体，并向 Google 传输您的 IP 地址。未经同意时，网页使用系统字体显示。详情请参阅',
+      intro: "我们仅在您同意后加载可选服务：Google Analytics 用于统计访问量、页面浏览、来源及使用情况；Google Fonts 用于加载字体。数据会传输给 Google，包括美国。您可以分别允许或拒绝这些服务。详情请参阅",
       privacy: '隐私政策', custom: '自定义', reject: '全部拒绝', accept: '全部接受', close: '关闭', settings: '自定义设置',
       instruction: '请选择允许使用的服务。您可以随时通过页脚的“Cookie 设置”更改选择。',
       necessary: '必要功能', always: '始终启用', local: '仅在此设备上保存您的选择（本地存储），不会设置 Cookie。',
-      fonts: '字体（Google Fonts）', details: '从 Google LLC 的服务器（美国）加载 Playfair Display 和 Inter 字体。此过程会传输您的 IP 地址。', save: '保存选择'
+      analytics: '访问统计（Google Analytics）', analyticsDetails: '使用 Cookie 统计访问和使用情况。Google 会接收页面浏览、设备信息和大致地区等数据。不用于个性化广告。您可随时在此撤回同意。', fonts: '字体（Google Fonts）', details: '从 Google LLC 的服务器（美国）加载 Playfair Display 和 Inter 字体。此过程会传输您的 IP 地址。', save: '保存选择'
     }
   };
   var t = translations[lang];
@@ -86,6 +124,9 @@
         <div class="cc-opt"><div class="cc-opt-head"><b>${t.fonts}</b>
           <label class="cc-switch"><input type="checkbox" id="cc-fonts" aria-label="${t.fonts}"${c && c.fonts ? ' checked' : ''}><i></i></label>
         </div><p>${t.details}</p></div>
+        <div class="cc-opt"><div class="cc-opt-head"><b>${t.analytics}</b>
+          <label class="cc-switch"><input type="checkbox" id="cc-analytics" aria-label="${t.analytics}"${valid(c) && c.analytics ? ' checked' : ''}><i></i></label>
+        </div><p>${t.analyticsDetails}</p></div>
         <div class="cc-actions">
           <button type="button" class="cc-btn cc-btn-primary" data-a="save">${t.save}</button>
           <button type="button" class="cc-btn" data-a="none">${t.reject}</button>
@@ -102,19 +143,8 @@
     }
     if (b) b.focus({ preventScroll: true });
   }
-  // Leiste beim Scrollen ausblenden (nur ohne gespeicherte Entscheidung); ganz oben wieder einblenden
-  var away = false, ticking = false;
-  function syncAway() {
-    ticking = false;
-    var want = window.scrollY > 20;
-    if (want === away) return;
-    away = want;
-    banner.classList.toggle("cc-away", away);
-  }
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(syncAway); } }
-
-  function decide(fonts) {
-    write(fonts); apply(fonts); banner.hidden = true; modal.hidden = true;
+  function decide(fonts, analytics) {
+    write(fonts, analytics); apply(fonts, analytics); banner.hidden = true; modal.hidden = true;
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -123,23 +153,29 @@
       var a = e.target.closest('[data-a]');
       if (!a) return;
       var act = a.getAttribute('data-a');
-      if (act === 'all') decide(true);
-      else if (act === 'none') decide(false);
+      if (act === 'all') decide(true, true);
+      else if (act === 'none') decide(false, false);
       else if (act === 'custom') show('custom');
-      else if (act === "close") { if (read()) modal.hidden = true; else show("main"); }
-      else if (act === "save") decide(document.getElementById("cc-fonts").checked);
+      else if (act === "close") { if (valid(read())) modal.hidden = true; else show("main"); }
+      else if (act === "save") decide(document.getElementById("cc-fonts").checked, document.getElementById("cc-analytics").checked);
     }
     banner.addEventListener("click", onClick);
-    modal.addEventListener("click", function (e) { if (e.target === modal) { if (read()) modal.hidden = true; else show("main"); } else onClick(e); });
+    modal.addEventListener("click", function (e) { if (e.target === modal) { if (valid(read())) modal.hidden = true; else show("main"); } else onClick(e); });
     document.addEventListener('click', function (e) {
       if (e.target.closest('[data-cookie-settings]')) { e.preventDefault(); show('custom'); }
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === "Escape" && !modal.hidden) { if (read()) modal.hidden = true; else show("main"); }
+      if (e.key === "Escape" && !modal.hidden) { if (valid(read())) modal.hidden = true; else show("main"); }
     });
-    window.addEventListener("scroll", onScroll, { passive: true });
     var c = read();
-    if (c) apply(c.fonts); else show('main');
-    syncAway();
+    if (valid(c)) apply(c.fonts, c.analytics);
+    else { apply(!!(c && c.fonts), false); show('main'); }
+    window.addEventListener('storage', function (event) {
+      if (event.key === KEY || event.key === null) {
+        var next = read();
+        apply(!!(next && next.fonts), !!(valid(next) && next.analytics));
+        if (!valid(next)) show('main');
+      }
+    });
   });
 })();
