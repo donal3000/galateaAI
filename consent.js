@@ -23,7 +23,7 @@
     window['ga-disable-' + ID] = false;
     gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     gtag('js', new Date());
-    gtag('config', ID, { allow_google_signals: false, allow_ad_personalization_signals: false, cookie_expires: 34128000, cookie_update: false });
+    gtag('config', ID);
     var script = document.createElement('script');
     script.id = 'galatea-ga'; script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
