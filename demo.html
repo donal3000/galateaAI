@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo – Lisa | Galatea AI</title>
+<meta name="description" content="Erleben Sie Lisa im Gespräch: mit eigenem Charakter, spontan entstehenden Antworten und einer Mimik, die Emotionen sichtbar macht.">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="consent.css">
+<!-- Schriften (Google Fonts) werden erst nach Einwilligung per consent.js geladen -->
+<style>
+:root{
+  --navy-900:#1F2350; --navy-700:#2B2F6B; --navy-500:#4A4F8C;
+  --sky-300:#9FB9DA; --sky-100:#D3E0F0;
+  --cream:#F7F0EC; --peach-300:#E9C2B3; --peach-500:#DDA993;
+  --burgundy:#8A1F4B; --white:#FFFFFF;
+  --text:#2B2F6B; --text-muted:#6B6F8F; --border:#DAD5E3;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --r-sm:8px; --r-md:20px; --r-lg:28px; --r-pill:999px;
+  --shadow-card:0 12px 32px rgba(43,47,107,.12);
+  --shadow-soft:0 6px 18px rgba(43,47,107,.08);
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--font-body);color:var(--text);background:var(--cream);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--burgundy);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--s-5)}
+@media(min-width:900px){.wrap{padding:0 var(--s-7)}}
+
+/* Basis */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--navy-700)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor;flex:none}
+.eyebrow.light{color:var(--peach-300)}
+.h-display{font-family:var(--font-display);font-style:italic;font-weight:400;line-height:1.1}
+.h-hero{font-size:72px}
+.h-section{font-size:48px}
+.h-card{font-size:28px}
+.h-small{font-size:22px}
+.accent{color:var(--burgundy)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:var(--r-pill);font:500 14px/1.4 var(--font-body);border:0;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+.btn-peach{background:var(--peach-500);color:var(--navy-900)}
+.btn-burgundy{background:var(--burgundy);color:#fff}
+.btn .arr{font-size:12px}
+.tag{display:inline-block;padding:4px 14px;border:1px solid var(--border);border-radius:var(--r-pill);font-size:11px;color:var(--text-muted);background:rgba(255,255,255,.5)}
+.badge{display:inline-block;padding:5px 12px;border-radius:var(--r-pill);background:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-700);box-shadow:var(--shadow-soft)}
+section{position:relative}
+.pad{padding:var(--s-9) 0}
+
+/* Navigation */
+.top{position:relative;overflow:hidden;color:#fff;background:var(--navy-900)}
+.top::before{content:"";position:absolute;inset:-110px 0;z-index:0;background:linear-gradient(rgba(31,35,80,.3),rgba(31,35,80,.3)),url("img/Galatea_Visual1.png") center/cover no-repeat;transform:translate3d(0,var(--py,0px),0)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;color:#fff;transition:background .25s,box-shadow .25s}
+.nav.scrolled{background:rgba(31,35,80,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(31,35,80,.25)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:var(--s-5)}
+.logo{display:inline-flex;align-items:center}
+.logo img{height:60px;width:auto}
+.nav ul{display:flex;gap:var(--s-6);list-style:none;font-size:13px;font-weight:500}
+.nav ul a{text-decoration:none;opacity:.9}
+.nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.nav .btn{padding:10px 20px;font-size:13px}
+
+/* Hero */
+.hero{position:relative;z-index:1;color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--s-7);align-items:center;min-height:620px;padding-top:calc(var(--s-8) + 72px);padding-bottom:var(--s-8)}
+.hero h1{margin-top:var(--s-4)}
+.hero p.sub{margin-top:var(--s-5);font-size:14px;color:rgba(255,255,255,.85);max-width:380px}
+.btn-row{display:flex;gap:var(--s-5);align-items:center;margin-top:var(--s-5);flex-wrap:wrap}
+.btn-row small{font-size:11px;max-width:170px;line-height:1.4;font-weight:500}
+.scroll{display:flex;align-items:center;gap:12px;margin-top:var(--s-8);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.scroll::before{content:"";width:28px;height:1px;background:#fff}
+.hero-visual{transform:translate3d(0,var(--py,0px),0);display:flex;flex-direction:column;align-items:center;gap:var(--s-7)}
+.hero-circle{width:min(100%,420px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 14px rgba(255,255,255,.06);background:var(--cream)}
+.hero-circle img{width:100%;height:100%;object-fit:cover;transform:scale(1.1)}
+.hero-visual figcaption{font-size:11px;color:rgba(255,255,255,.75);align-self:center}
+
+/* Profil */
+.profil{background:var(--cream)}
+.profil .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:var(--s-8);align-items:center}
+.profil h2{margin:var(--s-5) 0 var(--s-4);max-width:520px;font-size:40px}
+.profil p{color:var(--text-muted);max-width:520px;font-size:14px}
+.profil .tags{display:flex;gap:var(--s-2);flex-wrap:wrap;margin-top:var(--s-6);padding-top:var(--s-4);position:relative}
+.profil .tags::before{content:"";position:absolute;top:0;left:0;width:80px;height:1px;background:var(--border)}
+.profil-visual{position:relative;display:grid;place-items:center;padding:var(--s-6)}
+.profil-visual::before{content:"";position:absolute;inset:-6%;background:radial-gradient(closest-side,var(--peach-300),rgba(233,194,179,.35) 55%,transparent 100%);opacity:.8}
+.profil-visual .frame{position:relative;transform:translate3d(0,var(--py,0px),0);width:min(100%,400px);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card)}
+.profil-visual .frame img{width:100%;height:auto;aspect-ratio:3.5/4;object-fit:cover;object-position:center;transform:scale(1.04)}
+
+/* Leistungen */
+.leistungen{overflow:hidden;background:#9FB9DA}
+.leistungen::before{content:"";position:absolute;inset:-110px 0;z-index:0;background:url("img/Galatea_Visual2.png") center/cover no-repeat;transform:translate3d(0,var(--py,0px),0)}
+.leistungen>.wrap{position:relative;z-index:1}
+.head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s-6);flex-wrap:wrap}
+.head-row h2{margin-top:var(--s-4)}
+.head-note{font-size:11px;font-weight:500;max-width:230px;margin-top:var(--s-1);line-height:1.5}
+.leistungen .wrap{max-width:1280px}
+.circle-cards{--d:min(340px,calc((100vw - 96px)/3.27));--gap:calc(var(--d)*.13);display:flex;flex-wrap:wrap;column-gap:var(--gap);row-gap:calc(var(--d)*.125);justify-content:center;width:calc(var(--d)*3 + var(--gap)*2);max-width:100%;margin:var(--s-6) auto 0;padding:calc(var(--d)*.08) 0}
+.circle-card{width:var(--d);aspect-ratio:1/1;border-radius:50%;background:#fff;position:relative;box-shadow:var(--shadow-card)}
+.circle-card:nth-child(4){margin-left:calc(var(--d)*.1)}
+.circle-card .ico{position:absolute;top:-2.7%;left:50%;transform:translateX(-50%);width:44.5%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.circle-card .ico img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.circle-card h3{position:absolute;top:48%;left:50%;transform:translateX(-50%);width:62%;text-align:center;white-space:nowrap;font-size:calc(var(--d)*.077);line-height:calc(var(--d)*.093);margin:0}
+
+/* Team */
+.team{background:var(--cream)}
+.team .head-row h2{max-width:720px}
+.head-note.line{border-top:1px solid var(--navy-700);padding-top:var(--s-3);margin-top:var(--s-5);max-width:250px}
+.cards{display:flex;flex-wrap:wrap;gap:var(--s-5);justify-content:center;margin-top:var(--s-8)}
+.team-card{width:min(100%,360px);background:#fff;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column}
+.team-card .photo{height:260px;position:relative;background:linear-gradient(160deg,#35517a,#1e3350)}
+.team-card .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;transform:scale(1.04)}
+.team-card .photo .badge{position:absolute;left:16px;bottom:16px}
+.team-card .body{padding:var(--s-5);flex:1}
+.team-card .name{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3)}
+.team-card .name h3{font-size:24px}
+.arrow-icon{color:var(--burgundy);font-size:26px;line-height:1;text-decoration:none}
+.team-card .role{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:6px 0 var(--s-3)}
+.team-card hr{border:0;border-top:1px solid var(--border);margin-bottom:var(--s-3)}
+.team-card p{font-size:13px;color:var(--text-muted)}
+
+/* Kontakt */
+.kontakt{background:linear-gradient(100deg,var(--peach-300),var(--cream) 80%)}
+.kontakt .grid{display:flex;justify-content:space-between;align-items:center;gap:var(--s-6);flex-wrap:wrap}
+.kontakt h2{margin-top:var(--s-4);max-width:560px}
+.kontakt .cta{text-align:center}
+.kontakt .cta p{font-size:12px;font-weight:600;margin-bottom:var(--s-3)}
+.kontakt .tags{display:flex;gap:var(--s-2);flex-wrap:wrap;margin-top:var(--s-7)}
+.kontakt .tag{color:var(--navy-700);background:rgba(255,255,255,.6);border-color:rgba(43,47,107,.15);font-weight:500}
+
+/* Footer */
+footer{background:var(--navy-900);color:#fff;padding:var(--s-8) 0 var(--s-5);font-size:12px}
+.foot-grid{display:grid;grid-template-columns:1fr 1.4fr 1.4fr;gap:var(--s-6)}
+footer b{display:block;margin-bottom:var(--s-2);font-size:13px;font-weight:600}
+footer span,footer a{color:rgba(255,255,255,.65);display:block}
+.copy a{display:inline;color:inherit;text-decoration:none}
+.copy a:hover{color:#fff}
+footer a.mail{color:var(--peach-300);text-decoration:none}
+.foot-logo{display:flex;align-items:center;gap:10px;font-size:15px;margin-bottom:var(--s-3)}
+.foot-logo i{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;font:normal 500 12px var(--font-body)}
+.copy{display:flex;justify-content:space-between;gap:var(--s-3);flex-wrap:wrap;margin-top:var(--s-8);padding-top:var(--s-4);border-top:1px solid rgba(255,255,255,.15);font-size:10px;color:rgba(255,255,255,.55)}
+
+
+/* Reveal (Lazy Floating Fade) – nur mit JS aktiv; nutzt die Eigenschaft "translate", damit bestehende transforms unberührt bleiben */
+.js .reveal{opacity:0;translate:0 26px}
+.js .reveal.is-visible{opacity:1;translate:0 0;transition:opacity .75s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms),translate .75s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms)}
+.reduce-motion .reveal,.reduce-motion .reveal.is-visible{opacity:1;translate:none;transition:none}
+.reduce-motion .top::before,.reduce-motion .leistungen::before,.reduce-motion .hero-visual,.reduce-motion .profil-visual .frame{transform:none}
+/* Responsive */
+@media(max-width:1000px){
+  .h-hero{font-size:56px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid>div:first-child{grid-column:1/-1}
+}
+@media(max-width:800px){
+  .pad{padding:var(--s-8) 0}
+  .h-hero{font-size:44px}
+  .h-section{font-size:34px}
+  .profil h2{font-size:30px}
+  .nav ul{display:none}
+  .hero .wrap{grid-template-columns:1fr;min-height:0;gap:var(--s-7)}
+  .hero-visual{gap:var(--s-4)}
+  .scroll{margin-top:var(--s-6)}
+  .profil .wrap{grid-template-columns:1fr;gap:var(--s-6)}
+  .profil-visual{order:2}
+  .foot-grid{grid-template-columns:1fr}
+  .head-note{max-width:none}
+  .circle-cards{--d:min(280px,calc(100vw - 48px));width:100%;row-gap:var(--s-6);margin-top:var(--s-5)}
+  .circle-card:nth-child(4){margin-left:0}
+  .kontakt .cta{text-align:left}
+}
+@media(max-width:480px){
+  .logo{flex:none}
+  .logo img{height:auto;width:160px}
+  .nav .btn{padding:9px 14px}
+  .btn-row{gap:var(--s-4)}
+  .btn-burgundy{word-break:break-all}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+<link rel="stylesheet" href="languages.css"><link rel="stylesheet" href="projects.css"><link rel="canonical" href="https://galatea-ai.de/demo.html"><link rel="alternate" hreflang="de" href="https://galatea-ai.de/demo.html"><link rel="alternate" hreflang="en" href="https://galatea-ai.de/demo-en.html"><link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/demo-zh.html"><link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/demo.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Galatea AI"><meta property="og:title" content="Demo – Lisa | Galatea AI"><meta property="og:description" content="Erleben Sie Lisa im Gespräch: mit eigenem Charakter, spontan entstehenden Antworten und einer Mimik, die Emotionen sichtbar macht."><meta property="og:url" content="https://galatea-ai.de/demo.html"><meta property="og:locale" content="de_DE"><meta property="og:image" content="https://i.ytimg.com/vi/0L5yjcHCYMo/maxresdefault.jpg"><meta property="og:image:alt" content="Digitaler Avatar"><link rel="stylesheet" href="disclosures.css"><script defer src="consent.js?v=20261013-ga2"></script><link rel="stylesheet" href="demo.css"></head>
+<body class="project-page demo-page">
+
+<header class="nav scrolled project-nav">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="img/Galatea_Logo.svg" alt="Galatea AI" width="246" height="60"></a>
+    <nav aria-label="Hauptnavigation" class="site-nav">
+      <ul>
+        <li><a href="index.html#profil">Profil</a></li>
+        <li><a href="index.html#spezialisierung">Leistungen</a></li>
+        <li><a href="index.html#team">Team</a></li><li><a href="projects.html">Projekte</a></li><li><a href="demo.html" aria-current="page">Demo</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions"><div class="language-switch" role="group" aria-label="Sprache wählen"><a href="demo.html" lang="de" hreflang="de" data-language="de" aria-current="page">Deutsch</a><a href="demo-en.html" lang="en" hreflang="en" data-language="en">English</a><a href="demo-zh.html" lang="zh-Hans" hreflang="zh-Hans" data-language="zh">简体中文</a></div><a class="btn btn-peach" href="mailto:info@galatea-ai.de">Kontakt <span class="arr">↗</span></a>
+  </div></div>
+</header>
+
+<main id="top"><section class="demo-hero"><div class="wrap demo-intro"><div><span class="eyebrow">LISA · VIDEO-DEMONSTRATIONEN</span><h1 class="h-display">Zwei Einblicke.<br>Mimik und Gespräch.</h1><p>Zuerst zeigt Lisa als Schauspielerin ihre mimischen Ausdrucksmöglichkeiten. Danach erleben Sie sie im freien Gespräch: mit Antworten und Reaktionen, die aus ihrem Charakter und ihrem inneren emotionalen Zustand entstehen.</p><div class="btn-row"><a class="btn btn-burgundy" href="#expressions">Mimik ansehen <span aria-hidden="true">↗</span></a><a class="demo-text-link" href="#interviews">Interviews entdecken</a></div></div><div class="hero-note"><span>GALATEA AI</span><p>Digitaler Avatar · Lisa</p><div class="orbit" aria-hidden="true">✳</div></div></div></section><section class="demo-expressions" id="expressions"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">01 · MIMISCHE AUSDRUCKSMÖGLICHKEITEN</span><h2 class="h-display">Lisa als Schauspielerin.</h2></div><p>Diese Demonstration zeigt bewusst gespielte Emotionen und wechselnde Gesichtsausdrücke. Lisa stellt Gefühle gezielt dar – die Reaktionen entstehen hier nicht natürlich aus dem Gespräch.</p></div><div class="expression-grid"><article class="loop-card"><div class="video-poster " data-video="0L5yjcHCYMo" data-title="Lisa als Schauspielerin: Emotionen &amp; Mimik"><img src="https://i.ytimg.com/vi/0L5yjcHCYMo/maxresdefault.jpg" alt="Lisa als Schauspielerin: Emotionen &amp; Mimik" loading="lazy"><button class="play" aria-label="Video ansehen: Lisa als Schauspielerin: Emotionen &amp; Mimik"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="loop-caption"><h3>Lisa als Schauspielerin: Emotionen & Mimik</h3><p>Deutsch · Facial Expression Loop</p></div></article><article class="next-loop"><span class="eyebrow">Was die Mimik zeigt</span><span class="loop-symbol" aria-hidden="true">∞</span><h3 class="h-display">Bewusst gespielt. Vielfältig ausgedrückt.</h3><p>Von Freude und Traurigkeit bis zu Überraschung, Vertrauen und Scham: Diese Aufnahme demonstriert Lisas Ausdrucksmöglichkeiten als virtuelle Schauspielerin.</p></article></div></div></section>
+<section class="demo-library wrap" id="interviews"><div class="section-heading"><div><span class="eyebrow">02 · NATÜRLICHE REAKTIONEN IM GESPRÄCH</span><h2 class="h-display">Lisa im spontanen Dialog.</h2></div><p>Achten Sie auf Wortwahl, Stimme und den Verlauf ihrer Reaktionen. Die elf Gespräche zeigen, wie Lisa auf unterschiedliche Themen und Gesprächsimpulse eingeht.</p></div><div class="interview-explanation">Hier ist die Situation eine andere: Nur die Fragen des Interviewers sind vorbereitet. Lisas Antworten und Reaktionen sind nicht vorformuliert, sondern entstehen spontan aus ihrem Charakter und ihrem jeweiligen inneren emotionalen Zustand.</div><div class="video-grid"><article class="video-card"><div class="video-poster " data-video="INAjBbeM9QY" data-title="Freude und gute Nachrichten"><img src="https://i.ytimg.com/vi/INAjBbeM9QY/maxresdefault.jpg" alt="Freude und gute Nachrichten" loading="lazy"><button class="play" aria-label="Video ansehen: Freude und gute Nachrichten"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">01 <span>— Freude</span></span><h3>Freude und gute Nachrichten</h3><a href="https://www.youtube.com/watch?v=INAjBbeM9QY" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="4TVAc9eCWRo" data-title="Trauer, Verlust und Abschied"><img src="https://i.ytimg.com/vi/4TVAc9eCWRo/maxresdefault.jpg" alt="Trauer, Verlust und Abschied" loading="lazy"><button class="play" aria-label="Video ansehen: Trauer, Verlust und Abschied"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">02 <span>— Trauer</span></span><h3>Trauer, Verlust und Abschied</h3><a href="https://www.youtube.com/watch?v=4TVAc9eCWRo" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="TJG-vyyWU8E" data-title="Wut, Provokation und persönliche Grenzen"><img src="https://i.ytimg.com/vi/TJG-vyyWU8E/maxresdefault.jpg" alt="Wut, Provokation und persönliche Grenzen" loading="lazy"><button class="play" aria-label="Video ansehen: Wut, Provokation und persönliche Grenzen"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">03 <span>— Wut</span></span><h3>Wut, Provokation und persönliche Grenzen</h3><a href="https://www.youtube.com/watch?v=TJG-vyyWU8E" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="IV0kNuKvLXE" data-title="Überraschung um Omas geheimnisvolles Skizzenbuch"><img src="https://i.ytimg.com/vi/IV0kNuKvLXE/maxresdefault.jpg" alt="Überraschung um Omas geheimnisvolles Skizzenbuch" loading="lazy"><button class="play" aria-label="Video ansehen: Überraschung um Omas geheimnisvolles Skizzenbuch"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">04 <span>— Überraschung</span></span><h3>Überraschung um Omas geheimnisvolles Skizzenbuch</h3><a href="https://www.youtube.com/watch?v=IV0kNuKvLXE" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="E-xPcYjGcVs" data-title="Angst bei einer Nachtwanderung im Sturm"><img src="https://i.ytimg.com/vi/E-xPcYjGcVs/maxresdefault.jpg" alt="Angst bei einer Nachtwanderung im Sturm" loading="lazy"><button class="play" aria-label="Video ansehen: Angst bei einer Nachtwanderung im Sturm"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">05 <span>— Angst</span></span><h3>Angst bei einer Nachtwanderung im Sturm</h3><a href="https://www.youtube.com/watch?v=E-xPcYjGcVs" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="pDesLReJ8Hs" data-title="Ekel, verdorbenes Essen und unhygienische Zustände"><img src="https://i.ytimg.com/vi/pDesLReJ8Hs/maxresdefault.jpg" alt="Ekel, verdorbenes Essen und unhygienische Zustände" loading="lazy"><button class="play" aria-label="Video ansehen: Ekel, verdorbenes Essen und unhygienische Zustände"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">06 <span>— Ekel</span></span><h3>Ekel, verdorbenes Essen und unhygienische Zustände</h3><a href="https://www.youtube.com/watch?v=pDesLReJ8Hs" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="aVXku5T0Mj0" data-title="Vertrauen, Freundschaft und ehrliche Unterstützung"><img src="https://i.ytimg.com/vi/aVXku5T0Mj0/maxresdefault.jpg" alt="Vertrauen, Freundschaft und ehrliche Unterstützung" loading="lazy"><button class="play" aria-label="Video ansehen: Vertrauen, Freundschaft und ehrliche Unterstützung"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">07 <span>— Vertrauen</span></span><h3>Vertrauen, Freundschaft und ehrliche Unterstützung</h3><a href="https://www.youtube.com/watch?v=aVXku5T0Mj0" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="xuth93y4150" data-title="Interesse an Pilzgeflecht und Klang – Ausschnitt"><img src="https://i.ytimg.com/vi/xuth93y4150/maxresdefault.jpg" alt="Interesse an Pilzgeflecht und Klang – Ausschnitt" loading="lazy"><button class="play" aria-label="Video ansehen: Interesse an Pilzgeflecht und Klang – Ausschnitt"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">08 <span>— Interesse</span></span><h3>Interesse an Pilzgeflecht und Klang – Ausschnitt</h3><a href="https://www.youtube.com/watch?v=xuth93y4150" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="76sq7xFvysc" data-title="Verwirrung durch widersprüchliche Termine und Orte"><img src="https://i.ytimg.com/vi/76sq7xFvysc/maxresdefault.jpg" alt="Verwirrung durch widersprüchliche Termine und Orte" loading="lazy"><button class="play" aria-label="Video ansehen: Verwirrung durch widersprüchliche Termine und Orte"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">09 <span>— Verwirrung</span></span><h3>Verwirrung durch widersprüchliche Termine und Orte</h3><a href="https://www.youtube.com/watch?v=76sq7xFvysc" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="kTW2cxUKyxc" data-title="Sorge um eine Freundin – Stress, Hilfe und Grenzen"><img src="https://i.ytimg.com/vi/kTW2cxUKyxc/maxresdefault.jpg" alt="Sorge um eine Freundin – Stress, Hilfe und Grenzen" loading="lazy"><button class="play" aria-label="Video ansehen: Sorge um eine Freundin – Stress, Hilfe und Grenzen"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">10 <span>— Sorge</span></span><h3>Sorge um eine Freundin – Stress, Hilfe und Grenzen</h3><a href="https://www.youtube.com/watch?v=kTW2cxUKyxc" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article><article class="video-card"><div class="video-poster " data-video="o5eQhGSaREk" data-title="Scham nach einem Fehler – Vertrauen und Verantwortung"><img src="https://i.ytimg.com/vi/o5eQhGSaREk/maxresdefault.jpg" alt="Scham nach einem Fehler – Vertrauen und Verantwortung" loading="lazy"><button class="play" aria-label="Video ansehen: Scham nach einem Fehler – Vertrauen und Verantwortung"><span aria-hidden="true">▶</span></button><span class="poster-caption">Deutsch · Video ansehen</span></div><div class="video-copy"><span class="video-number">11 <span>— Scham</span></span><h3>Scham nach einem Fehler – Vertrauen und Verantwortung</h3><a href="https://www.youtube.com/watch?v=o5eQhGSaREk" target="_blank" rel="noopener noreferrer">Auf YouTube öffnen ↗</a></div></article></div></section>
+<section class="demo-local"><div class="wrap"><div><span class="eyebrow">LOCAL AI · GALATEA</span><h2 class="h-display">Auf einem lokalen Rechner.<br>Mitten im Gespräch.</h2></div><div><p>Die KI-Berechnung und das Rendering der gezeigten Avatar-Aufnahmen erfolgten vollständig auf einem lokalen Rechner – ohne Cloud-Verarbeitung. Die Videos werden über YouTube bereitgestellt.</p><a class="btn btn-peach" href="avatar.html">Mehr über Avatar ↗</a></div></div></section>
+<section class="project-contact"><div class="wrap"><div><h2 class="h-display">Was könnte Lisa für Ihr Unternehmen tun?</h2><p>Sprechen Sie mit uns über Kundenservice, Wissensvermittlung oder Ihren eigenen Avatar. Gemeinsam finden wir einen passenden Anwendungsfall.</p></div><a class="btn btn-burgundy" href="mailto:info@galatea-ai.de?subject=Galatea%20AI%20Demo">Demonstration anfragen ↗</a></div></section></main><footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo foot-logo" href="index.html"><img src="img/Galatea_Logo.svg" alt="Galatea AI" width="246" height="60"></a>
+        <span>Angaben gemäß § 5 DDG</span>
+      </div>
+      <div>
+        <b>Galatea AI Beratung</b>
+        <span>Alexander Kleiner, Fang Wei-Kleiner</span>
+        <span>Waldstrasse 22, 75242 Neuhausen</span>
+        <a class="mail" href="mailto:info@galatea-ai.de">info@galatea-ai.de</a>
+        <span>Wirtschafts-Identifikationsnummer gemäß § 139c AO: DE461219852-00001</span>
+      </div>
+      <div>
+        <b>Haftung für externe Links</b>
+        <span>Für Inhalte externer Links übernehmen wir keine Haftung. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</span>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 Galatea AI Beratung | Gegründet 01. April 2026</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#" data-cookie-settings>Cookie-Einstellungen</a></span></div>
+  </div>
+</footer>
+
+<script src="languages.js"></script><script src="demo.js"></script></body>
+</html>
