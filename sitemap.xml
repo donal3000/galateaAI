@@ -84,4 +84,25 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/galatea-myth-8cb376b9aa-zh.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/galatea-myth-8cb376b9aa.html"/>
   </url>
+  <url>
+    <loc>https://galatea-ai.de/local-ai.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/local-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/local-ai-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/local-ai-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/local-ai.html"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/local-ai-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/local-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/local-ai-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/local-ai-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/local-ai.html"/>
+  </url>
+  <url>
+    <loc>https://galatea-ai.de/local-ai-zh.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://galatea-ai.de/local-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://galatea-ai.de/local-ai-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://galatea-ai.de/local-ai-zh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://galatea-ai.de/local-ai.html"/>
+  </url>
 </urlset>
