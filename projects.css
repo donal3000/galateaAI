@@ -28,7 +28,10 @@
 .avatar-portrait{position:relative;padding:15px 0 30px 10px;max-width:450px}
 .main-persona{width:100%;aspect-ratio:1/1.14;object-fit:cover;border-radius:180px 180px 28px 28px;background:#20232d;box-shadow:var(--shadow-card)}
 .secondary-persona{position:absolute;bottom:24px;left:-44px;width:144px;aspect-ratio:1;object-fit:cover;border:7px solid var(--cream);border-radius:50%}
-.avatar-portrait figcaption{text-align:right;font-size:10px;margin-top:12px;color:var(--text-muted)}
+.lisa-inset{position:absolute;width:120px;aspect-ratio:1;object-fit:cover;border:7px solid var(--cream);border-radius:50%;box-shadow:var(--shadow-card)}
+.lisa-inset-a{top:42px;right:-38px}
+.lisa-inset-b{right:-42px;bottom:20px}
+.avatar-portrait figcaption{text-align:center;font-size:10px;margin-top:12px;color:var(--text-muted)}
 .avatar-features{padding-top:65px;padding-bottom:72px}
 .avatar-features h2,.avatar-uses h2,.avatar-platform h2,.project-contact h2{font-size:40px}
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:38px}
@@ -58,11 +61,11 @@
 html[lang="zh-Hans"] .avatar-intro h1{font-size:48px}
 @media(max-width:1150px){.nav ul{gap:14px}.nav .logo img{width:175px;height:auto}.nav .wrap{gap:12px}.language-switch a{padding-left:7px;padding-right:7px}.nav-actions{gap:10px}.nav .btn{padding-left:14px;padding-right:14px}}
 @media(max-width:1000px){.nav .wrap{height:auto;min-height:104px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.nav .site-nav{display:block;order:3;flex-basis:100%}.nav .site-nav ul{display:flex;justify-content:center;gap:26px;font-size:12px}.project-page main{padding-top:104px}html{scroll-padding-top:122px}.hero .wrap{padding-top:calc(var(--s-8) + 104px)}.avatar-intro h1{font-size:46px}.avatar-hero-grid{gap:40px}.use-grid{grid-template-columns:repeat(2,1fr)}.use-card>img{height:270px}}
-@media(max-width:700px){.avatar-hero-grid{grid-template-columns:1fr;gap:30px;padding-top:30px;padding-bottom:42px}.avatar-portrait{width:80%;margin:auto;max-width:380px}.avatar-intro h1{font-size:44px}.secondary-persona{width:112px;left:-22px}.features-grid{grid-template-columns:1fr;gap:26px}.avatar-features h2,.avatar-uses h2,.avatar-platform h2{font-size:32px}.use-heading{display:block}.use-heading p{margin-top:14px}.avatar-platform{grid-template-columns:1fr;gap:26px}.project-card{grid-template-columns:1fr}.project-picture{min-height:0;height:340px}.project-copy{padding:30px}.project-copy h2{font-size:36px}.projects-intro h1{font-size:46px}.project-contact .wrap{align-items:flex-start;flex-direction:column}.project-contact h2{font-size:30px}}
+@media(max-width:700px){.avatar-hero-grid{grid-template-columns:1fr;gap:30px;padding-top:30px;padding-bottom:42px}.avatar-portrait{width:80%;margin:auto;max-width:380px}.avatar-intro h1{font-size:44px}.secondary-persona{width:100px;left:-18px;bottom:24px}.lisa-inset{width:86px;border-width:5px}.lisa-inset-a{top:34px;right:-22px}.lisa-inset-b{right:-24px;bottom:22px}.features-grid{grid-template-columns:1fr;gap:26px}.avatar-features h2,.avatar-uses h2,.avatar-platform h2{font-size:32px}.use-heading{display:block}.use-heading p{margin-top:14px}.avatar-platform{grid-template-columns:1fr;gap:26px}.project-card{grid-template-columns:1fr}.project-picture{min-height:0;height:340px}.project-copy{padding:30px}.project-copy h2{font-size:36px}.projects-intro h1{font-size:46px}.project-contact .wrap{align-items:flex-start;flex-direction:column}.project-contact h2{font-size:30px}}
 @media(max-width:620px){.nav .wrap{min-height:144px}.nav .site-nav{order:4}.nav .site-nav ul{gap:18px;font-size:11px}.nav .logo img{width:150px}.project-page main{padding-top:144px}.hero .wrap{padding-top:calc(var(--s-8) + 144px)}html{scroll-padding-top:160px}.use-grid{grid-template-columns:1fr;gap:24px}.use-card{display:grid;grid-template-columns:40% 60%;border-radius:16px}.use-card>img{height:100%;min-height:180px}.use-card>div{padding:22px 17px}.use-card h3{font-size:16px}.use-card p{font-size:13px}.avatar-tags{gap:6px}.avatar-tags span{font-size:10px}.avatar-features,.avatar-platform{padding-top:48px;padding-bottom:48px}.projects-intro{padding-top:45px}.project-list{padding-bottom:60px}html[lang="zh-Hans"] .avatar-intro h1{font-size:38px}}
 @media(prefers-reduced-motion:reduce){.project-picture img{transition:none}}
 /* Explicit image proportions prevent intrinsic HTML sizes stretching portraits. */
-.main-persona,.secondary-persona{height:auto}
+.main-persona,.secondary-persona,.lisa-inset{height:auto}
 .project-picture{height:460px;min-height:0}
 @media(max-width:700px){.project-picture{height:340px}}
 /* Investor overview and project detail. */
