@@ -3,7 +3,12 @@
   '5L-POTxF6m4':'BV1jNWh6CEoM',
   'kaCUYo-VlkU':'BV1nuWq6NEmk',
   'OBfKgLWtRRw':'BV1LNWh6CEDw',
-  'Kn8r-1lGYx8':'BV144Wh6bEcp'
+  'Kn8r-1lGYx8':'BV144Wh6bEcp',
+  '3otK829FVKs':'BV14iWq62Eku',
+  '83l6_lhRV-0':'BV1tiWq62EwR',
+  'C5VR8_G03R8':'BV1NrWq6VEJf',
+  'Hoba3HinV1E':'BV11rWq6VEHv',
+  'EELjBSD_XNo':'BV1NrWq6VELL'
  };
  var pageLanguage=document.documentElement.lang.toLowerCase();
  var timeZone='';
