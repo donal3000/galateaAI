@@ -1,6 +1,7 @@
 (function(){
  var bilibiliVideos={
   '5L-POTxF6m4':'BV1jNWh6CEoM',
+  'kaCUYo-VlkU':'BV1nuWq6NEmk',
   'OBfKgLWtRRw':'BV1LNWh6CEDw',
   'Kn8r-1lGYx8':'BV144Wh6bEcp'
  };
