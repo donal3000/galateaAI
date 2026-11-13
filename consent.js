@@ -29,7 +29,7 @@
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
     document.head.appendChild(script);
   }
-  var FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap';
+  var FONTS = 'fonts.css?v=20261113-cn1';
   var banner, modal;
 
   function read() {
@@ -76,27 +76,27 @@
   var translations = {
     de: {
       title: 'Ihre Privatsphäre zählt',
-      intro: "Optionale Dienste laden wir nur mit Ihrer Einwilligung: Google Analytics misst Besuche, Seitenaufrufe, Herkunft und Nutzung; Google Fonts lädt Schriftarten. Dabei werden Daten an Google übertragen, auch in die USA. Sie können beide Dienste getrennt auswählen oder ablehnen. Details in unserer",
+      intro: "Optionale Dienste laden wir nur mit Ihrer Einwilligung: Google Analytics misst Besuche, Seitenaufrufe, Herkunft und Nutzung. Die optionalen Schriftarten liegen direkt auf unserem Server und übertragen keine Daten an Dritte. Sie können beide Optionen getrennt auswählen oder ablehnen. Details in unserer",
       privacy: 'Datenschutzerklärung', custom: 'Anpassen', reject: 'Alle ablehnen', accept: 'Alle akzeptieren', close: 'Schließen', settings: 'Einstellungen anpassen',
       instruction: 'Wählen Sie, welche Dienste Sie zulassen. Ihre Auswahl können Sie jederzeit über „Cookie-Einstellungen“ im Seitenfuß ändern.',
       necessary: 'Notwendig', always: 'Immer aktiv', local: 'Speichert nur Ihre Auswahl auf diesem Gerät (lokaler Speicher). Es werden keine Cookies gesetzt.',
-      analytics: 'Besuchsstatistik (Google Analytics)', analyticsDetails: 'Verwendet Cookies, um Besuche und Nutzung zu messen. Google erhält unter anderem Seitenaufrufe, Geräteinformationen und die ungefähre Region. Keine personalisierte Werbung. Widerruf jederzeit hier möglich.', fonts: 'Schriftarten (Google Fonts)', details: 'Lädt Playfair Display und Inter von Servern der Google LLC (USA). Dabei wird Ihre IP-Adresse übertragen.', save: 'Auswahl speichern'
+      analytics: 'Besuchsstatistik (Google Analytics)', analyticsDetails: 'Verwendet Cookies, um Besuche und Nutzung zu messen. Google erhält unter anderem Seitenaufrufe, Geräteinformationen und die ungefähre Region. Keine personalisierte Werbung. Widerruf jederzeit hier möglich.', fonts: 'Lokale Schriftarten', details: 'Lädt Playfair Display und Inter direkt von galatea-ai.de. Es werden dabei keine Daten an Dritte übertragen.', save: 'Auswahl speichern'
     },
     en: {
       title: 'Your privacy matters',
-      intro: "Optional services load only with your consent: Google Analytics measures visits, page views, traffic sources and usage; Google Fonts loads typefaces. Data is sent to Google, including in the USA. You can allow or reject each service separately. See our",
+      intro: "Optional services load only with your consent: Google Analytics measures visits, page views, traffic sources and usage. The optional typefaces are hosted directly on our server and send no data to third parties. You can allow or reject each option separately. See our",
       privacy: 'privacy policy', custom: 'Customise', reject: 'Reject all', accept: 'Accept all', close: 'Close', settings: 'Customise settings',
       instruction: 'Choose which services to allow. You can change your choice at any time using “Cookie settings” in the footer.',
       necessary: 'Necessary', always: 'Always active', local: 'Stores only your choice on this device (local storage). No cookies are set.',
-      analytics: 'Visitor statistics (Google Analytics)', analyticsDetails: 'Uses cookies to measure visits and usage. Google receives page views, device information and approximate location, among other data. No personalised advertising. You can withdraw consent here at any time.', fonts: 'Typefaces (Google Fonts)', details: 'Loads Playfair Display and Inter from Google LLC servers (USA). Your IP address is transmitted in the process.', save: 'Save selection'
+      analytics: 'Visitor statistics (Google Analytics)', analyticsDetails: 'Uses cookies to measure visits and usage. Google receives page views, device information and approximate location, among other data. No personalised advertising. You can withdraw consent here at any time.', fonts: 'Local typefaces', details: 'Loads Playfair Display and Inter directly from galatea-ai.de. No data is sent to third parties.', save: 'Save selection'
     },
     zh: {
       title: '我们重视您的隐私',
-      intro: "我们仅在您同意后加载可选服务：Google Analytics 用于统计访问量、页面浏览、来源及使用情况；Google Fonts 用于加载字体。数据会传输给 Google，包括美国。您可以分别允许或拒绝这些服务。详情请参阅",
+      intro: "我们仅在您同意后加载可选服务：Google Analytics 用于统计访问量、页面浏览、来源及使用情况。可选字体直接托管在我们自己的服务器上，不会向第三方传输数据。您可以分别允许或拒绝这些选项。详情请参阅",
       privacy: '隐私政策', custom: '自定义', reject: '全部拒绝', accept: '全部接受', close: '关闭', settings: '自定义设置',
       instruction: '请选择允许使用的服务。您可以随时通过页脚的“Cookie 设置”更改选择。',
       necessary: '必要功能', always: '始终启用', local: '仅在此设备上保存您的选择（本地存储），不会设置 Cookie。',
-      analytics: '访问统计（Google Analytics）', analyticsDetails: '使用 Cookie 统计访问和使用情况。Google 会接收页面浏览、设备信息和大致地区等数据。不用于个性化广告。您可随时在此撤回同意。', fonts: '字体（Google Fonts）', details: '从 Google LLC 的服务器（美国）加载 Playfair Display 和 Inter 字体。此过程会传输您的 IP 地址。', save: '保存选择'
+      analytics: '访问统计（Google Analytics）', analyticsDetails: '使用 Cookie 统计访问和使用情况。Google 会接收页面浏览、设备信息和大致地区等数据。不用于个性化广告。您可随时在此撤回同意。', fonts: '本地字体', details: '直接从 galatea-ai.de 加载 Playfair Display 和 Inter 字体，不会向第三方传输数据。', save: '保存选择'
     }
   };
   var t = translations[lang];
