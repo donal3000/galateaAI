@@ -13,7 +13,9 @@
   'cQsejGkO8AI':'BV1VesL6aEwp',
   'EntxWlz2Glg':'BV1j4sL6TEaG',
   'GiKhktzC5As':'BV1j4sL6TEvU',
-  '7GnCmF2OJeg':'BV1j4sL6TEbY'
+  '7GnCmF2OJeg':'BV1j4sL6TEbY',
+  '56E-88EE9nU':'BV1GDsW6XEL4',
+  'Ft5vobkl77k':'BV1GDsW6XEYm'
  };
  var pageLanguage=document.documentElement.lang.toLowerCase();
  var timeZone='';
