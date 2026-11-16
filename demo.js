@@ -33,7 +33,7 @@
  }
  function bilibiliFrame(id,title,autoplay){
   var iframe=document.createElement('iframe');
-  iframe.src='https://player.bilibili.com/player.html?bvid='+encodeURIComponent(bilibiliVideos[id])+'&page=1&high_quality=1&autoplay='+(autoplay?'1':'0');
+  iframe.src='https://player.bilibili.com/player.html?bvid='+encodeURIComponent(bilibiliVideos[id])+'&p=1&poster=1&danmaku=false&autoplay='+(autoplay?'1':'0');
   iframe.title=title;iframe.allow='autoplay; fullscreen; picture-in-picture';
   iframe.referrerPolicy='strict-origin-when-cross-origin';iframe.allowFullscreen=true;
   return iframe;
@@ -41,7 +41,6 @@
  if(useBilibili){
   document.querySelectorAll('[data-video]').forEach(function(box){
    var id=box.dataset.video,bvid=bilibiliVideos[id];if(!bvid)return;
-   box.replaceChildren(bilibiliFrame(id,box.dataset.title,false));
    var card=box.closest('article');
    var link=card&&card.querySelector('a[href*="youtube.com/watch?v="]');
    if(link){link.href='https://www.bilibili.com/video/'+bvid;link.textContent=pageLanguage.indexOf('zh')===0?'在哔哩哔哩上观看 ↗':'Open on Bilibili ↗';}
